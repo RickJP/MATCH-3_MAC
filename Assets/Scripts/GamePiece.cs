@@ -12,7 +12,7 @@ public class GamePiece : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void setCoordinates (int x, int y) {
+	public void SetCoordinates (int x, int y) {
         xIndex = x;
         yIndex = y;
 	}

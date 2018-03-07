@@ -5,15 +5,23 @@ using UnityEngine;
 public class Board : MonoBehaviour {
 
     public int width, height;
-    public GameObject tilePrefab;
     public int borderSize;
 
+
+    public GameObject tilePrefab;
+    public GameObject[] gamePiecePrefabs;
+
     Tile[,] m_allTiles;
+    GamePiece[,] m_allGamePieces;
 
 	// Use this for initialization
 	void Start () {
         m_allTiles = new Tile[width, height];
+        m_allGamePieces = new GamePiece[width, height];
+
         SetupTiles();
+        SetupCamera();
+        FillRandom();
 	}
 
 
@@ -49,4 +57,47 @@ public class Board : MonoBehaviour {
 
         Camera.main.orthographicSize = (verticalSize > horizontalSize) ? verticalSize : horizontalSize;
     }
+
+
+    GameObject GetRandomGamePiece()
+    {
+        int randomIndex = Random.Range(0, gamePiecePrefabs.Length);
+
+        if (gamePiecePrefabs[randomIndex] == null)
+        {
+            Debug.LogWarning("BOARD AT " + randomIndex + " not added.");
+        }
+
+        return gamePiecePrefabs[randomIndex];
+    }
+
+    void PlaceGamePiece(GamePiece gamePiece, int x, int y)
+    {
+        if (gamePiece == null)
+        {
+            Debug.LogWarning("BOARD: Invalid GamePiece");
+            return;
+        }
+
+        gamePiece.transform.position = new Vector3(x, y, 0);
+        gamePiece.transform.rotation = Quaternion.identity;
+        gamePiece.SetCoordinates(x, y);
+    }
+
+    void FillRandom()
+    {
+        for (int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                GameObject randomPiece = Instantiate(GetRandomGamePiece(), Vector3.zero, Quaternion.identity) as GameObject;
+
+                if (randomPiece != null)
+                {
+                    PlaceGamePiece(randomPiece.GetComponent<GamePiece>(), i, j);
+                }
+            }
+        }
+    }
+       
 }
