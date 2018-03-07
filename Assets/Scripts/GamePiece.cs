@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tile : MonoBehaviour {
+public class GamePiece : MonoBehaviour {
 
     public int xIndex, yIndex;
-
-    Board m_board;
 
 	// Use this for initialization
 	void Start () {
@@ -14,14 +12,8 @@ public class Tile : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    public void Init(int x, int y, Board board)
-    {
+	void setCoordinates (int x, int y) {
         xIndex = x;
         yIndex = y;
-        m_board = board;
-    }
+	}
 }

@@ -14,7 +14,6 @@ public class Board : MonoBehaviour {
 	void Start () {
         m_allTiles = new Tile[width, height];
         SetupTiles();
-
 	}
 
 
@@ -32,6 +31,8 @@ public class Board : MonoBehaviour {
 
                 tile.transform.parent = transform;
 
+
+                m_allTiles[i, j].Init(i, j, this);
             }
         }
     }
