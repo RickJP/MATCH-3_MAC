@@ -2,15 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TileType
+{
+    Normal,
+    Obstacle
+}
+
 public class Tile : MonoBehaviour {
 
     public int xIndex, yIndex;
 
+    public TileType tileType = TileType.Normal;
+
     Board m_board;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+    {
+	    	
 	}
 	
 	// Update is called once per frame
