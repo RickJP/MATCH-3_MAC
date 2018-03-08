@@ -42,30 +42,34 @@ public class Board : MonoBehaviour
         SetupTiles();
         SetupCamera();
         FillBoard(10, 0.5f);
-
     }
 
-
-
-   
-
-    private void MakeTile(GameObject prefab, int x, int y, int z = 0)
+    void MakeTile(GameObject prefab, int x, int y, int z = 0)
     {
-        GameObject tile = Instantiate(prefab, new Vector3(x, y, 0), Quaternion.identity) as GameObject;
+        if (prefab != null)
+        {
+            GameObject tile = Instantiate(prefab, new Vector3(x, y, z), Quaternion.identity) as GameObject;
 
-        tile.name = "Tile (" + x + "," + y + ")";
+	        tile.name = "Tile (" + x + "," + y + ")";
+            m_allTiles[x, y] = tile.GetComponent<Tile>();
 
-        m_allTiles[x, y] = tile.GetComponent<Tile>();
-
-        tile.transform.parent = transform;
-
-
-        m_allTiles[x, y].Init(x, y, this);
+            tile.transform.parent = transform;
+            m_allTiles[x, y].Init(x, y, this);
+        }
     }
 
 
     void SetupTiles()
-    {
+    {      
+        foreach(StartingTile sTile in startingTiles)
+        {
+
+            if (sTile != null)
+            {
+                MakeTile(sTile.tilePrefab, sTile.x, sTile.y, sTile.z);
+            }
+        }
+
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
@@ -158,7 +162,7 @@ public class Board : MonoBehaviour
         {
             for (int j = 0; j < height; j++)
             {
-                if (m_allGamePieces[i, j] == null)
+                if (m_allGamePieces[i, j] == null && m_allTiles[i, j].tileType != TileType.Obstacle)
                 {
                     GamePiece piece = FillRandomAt(i, j, falseYOffset, moveTime);
                     iterations = 0;
@@ -170,7 +174,7 @@ public class Board : MonoBehaviour
 
                         iterations++;
 
-                        if (iterations > maxIterations)
+                        if (iterations >= maxIterations)
                         {
                             Debug.LogWarning("Broke out of while loop after 100 iterations!");
                             break;
@@ -182,9 +186,7 @@ public class Board : MonoBehaviour
         }
     }
 
-   
-
-
+  
     bool HasMatchOnFill(int x, int y, int minLength = 3)
     {
         List<GamePiece> leftMatches = FindMatches(x, y, new Vector2(-1, 0), minLength);
@@ -528,7 +530,7 @@ List<GamePiece> FindVerticalMatches(int startX, int startY, int minLength = 3)
 
         for (int i = 0; i < height -1; i++)
         {
-            if (m_allGamePieces[column, i] == null)        // we have hit an empty space, so take action
+            if (m_allGamePieces[column, i] == null && m_allTiles[column, i].tileType != TileType.Obstacle)        // we have hit an empty space, so take action
             {
                 for (int j = i + 1; j < height;  j++)
                 {

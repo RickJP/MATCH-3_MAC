@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine;
 
 public enum TileType
 {
@@ -23,6 +22,10 @@ public class Tile : MonoBehaviour {
 	    	
 	}
 	
+	// Update is called once per frame
+	void Update () {
+		
+	}
 
     public void Init(int x, int y, Board board)
     {

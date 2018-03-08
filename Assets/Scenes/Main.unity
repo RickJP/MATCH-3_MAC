@@ -149,9 +149,22 @@ MonoBehaviour:
     type: 2}
   gamePiecePrefabs:
   - {fileID: 1235507716610692, guid: a09f535ea2f42bf4a99c225b9a09a4a4, type: 2}
+  - {fileID: 1566296319298858, guid: d1567b32d3813774da0db34063fa9478, type: 2}
+  - {fileID: 1920900020424854, guid: ad7b8d126b2a2434f9f7c00fc9ae167b, type: 2}
+  - {fileID: 1412870071191450, guid: d192d0c933ea1ca4a9b100e8b8e51b90, type: 2}
   - {fileID: 1765086069392398, guid: 24f430e23037cd0448a805dbc8f6d7ee, type: 2}
   swapTime: 0.3
-  startingTiles: []
+  startingTiles:
+  - tilePrefab: {fileID: 1701192870182704, guid: 4defd269bc1c5c04aadc6d198db0ce7c,
+      type: 2}
+    x: 2
+    y: 2
+    z: 0
+  - tilePrefab: {fileID: 1701192870182704, guid: 4defd269bc1c5c04aadc6d198db0ce7c,
+      type: 2}
+    x: 3
+    y: 3
+    z: 0
 --- !u!4 &40695495
 Transform:
   m_ObjectHideFlags: 0
