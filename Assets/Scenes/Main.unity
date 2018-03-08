@@ -150,6 +150,7 @@ MonoBehaviour:
   - {fileID: 1407049206700120, guid: b319d75035b7de34ea1d12628cfd085c, type: 2}
   - {fileID: 1407049206700120, guid: b319d75035b7de34ea1d12628cfd085c, type: 2}
   - {fileID: 1412870071191450, guid: d192d0c933ea1ca4a9b100e8b8e51b90, type: 2}
+  swapTime: 0.1
 --- !u!4 &40695495
 Transform:
   m_ObjectHideFlags: 0
