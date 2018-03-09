@@ -159,42 +159,20 @@ MonoBehaviour:
     type: 2}
   rowBombPrefab: {fileID: 1979235832596210, guid: 1d86d864336214e4b8229435649f6c81,
     type: 2}
+  colorBombPrefab: {fileID: 1839549366912358, guid: 4d900dd10be924341869187e72d0b7e7,
+    type: 2}
   swapTime: 0.3
   fillYOffset: 20
   fillMoveTime: 0.5
   startingTiles: []
   startingGamePieces:
-  - prefab: {fileID: 1412870071191450, guid: d192d0c933ea1ca4a9b100e8b8e51b90, type: 2}
+  - prefab: {fileID: 1839549366912358, guid: 4d900dd10be924341869187e72d0b7e7, type: 2}
     x: 3
     y: 3
     z: 0
-  - prefab: {fileID: 1412870071191450, guid: d192d0c933ea1ca4a9b100e8b8e51b90, type: 2}
+  - prefab: {fileID: 1839549366912358, guid: 4d900dd10be924341869187e72d0b7e7, type: 2}
     x: 3
     y: 4
-    z: 0
-  - prefab: {fileID: 1412870071191450, guid: d192d0c933ea1ca4a9b100e8b8e51b90, type: 2}
-    x: 3
-    y: 6
-    z: 0
-  - prefab: {fileID: 1412870071191450, guid: d192d0c933ea1ca4a9b100e8b8e51b90, type: 2}
-    x: 4
-    y: 5
-    z: 0
-  - prefab: {fileID: 1412870071191450, guid: d192d0c933ea1ca4a9b100e8b8e51b90, type: 2}
-    x: 5
-    y: 4
-    z: 0
-  - prefab: {fileID: 1412870071191450, guid: d192d0c933ea1ca4a9b100e8b8e51b90, type: 2}
-    x: 6
-    y: 4
-    z: 0
-  - prefab: {fileID: 1235507716610692, guid: a09f535ea2f42bf4a99c225b9a09a4a4, type: 2}
-    x: 5
-    y: 5
-    z: 0
-  - prefab: {fileID: 1545726172010460, guid: f432c3f8dfbf65c458a97d10ba9e7706, type: 2}
-    x: 4
-    y: 7
     z: 0
 --- !u!4 &40695495
 Transform:
@@ -310,6 +288,7 @@ MonoBehaviour:
     type: 2}
   doubleBreakFXPrefab: {fileID: 1792188263921986, guid: 7d088604bbb6924498543f7b99b94252,
     type: 2}
+  bombFXPrefab: {fileID: 0}
 --- !u!4 &1008588698
 Transform:
   m_ObjectHideFlags: 0
