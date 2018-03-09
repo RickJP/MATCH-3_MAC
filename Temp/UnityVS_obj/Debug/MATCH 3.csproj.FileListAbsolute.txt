@@ -1,5 +1,3 @@
-A:\UNITY PROJECTS\MATCH 3\Temp\UnityVS_obj\Debug\MATCH 3.csprojResolveAssemblyReference.cache
-A:\UNITY PROJECTS\MATCH 3\Temp\UnityVS_obj\Debug\MATCH 3.csproj.CoreCompileInputs.cache
 A:\UNITY PROJECTS\MATCH 3\Temp\UnityVS_bin\Debug\Assembly-CSharp.dll
 A:\UNITY PROJECTS\MATCH 3\Temp\UnityVS_bin\Debug\Assembly-CSharp.pdb
 A:\UNITY PROJECTS\MATCH 3\Temp\UnityVS_bin\Debug\nunit.framework.dll
@@ -168,5 +166,7 @@ A:\UNITY PROJECTS\MATCH 3\Temp\UnityVS_bin\Debug\UnityEditor.Purchasing.xml
 A:\UNITY PROJECTS\MATCH 3\Temp\UnityVS_bin\Debug\UnityEngine.StandardEvents.xml
 A:\UNITY PROJECTS\MATCH 3\Temp\UnityVS_bin\Debug\UnityEditor.iOS.Extensions.Xcode.xml
 A:\UNITY PROJECTS\MATCH 3\Temp\UnityVS_bin\Debug\UnityEditor.iOS.Extensions.Common.xml
+A:\UNITY PROJECTS\MATCH 3\Temp\UnityVS_obj\Debug\MATCH 3.csprojResolveAssemblyReference.cache
+A:\UNITY PROJECTS\MATCH 3\Temp\UnityVS_obj\Debug\MATCH 3.csproj.CoreCompileInputs.cache
 A:\UNITY PROJECTS\MATCH 3\Temp\UnityVS_obj\Debug\Assembly-CSharp.dll
 A:\UNITY PROJECTS\MATCH 3\Temp\UnityVS_obj\Debug\Assembly-CSharp.pdb

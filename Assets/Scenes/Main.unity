@@ -155,14 +155,34 @@ MonoBehaviour:
   - {fileID: 1765086069392398, guid: 24f430e23037cd0448a805dbc8f6d7ee, type: 2}
   swapTime: 0.3
   startingTiles:
-  - tilePrefab: {fileID: 1701192870182704, guid: 4defd269bc1c5c04aadc6d198db0ce7c,
+  - tilePrefab: {fileID: 1112420243198592, guid: f01da3db2035573499743553ee087457,
       type: 2}
     x: 2
     y: 2
     z: 0
+  - tilePrefab: {fileID: 1112420243198592, guid: f01da3db2035573499743553ee087457,
+      type: 2}
+    x: 2
+    y: 3
+    z: 0
+  - tilePrefab: {fileID: 1112420243198592, guid: f01da3db2035573499743553ee087457,
+      type: 2}
+    x: 2
+    y: 4
+    z: 0
+  - tilePrefab: {fileID: 1112420243198592, guid: f01da3db2035573499743553ee087457,
+      type: 2}
+    x: 2
+    y: 5
+    z: 0
   - tilePrefab: {fileID: 1701192870182704, guid: 4defd269bc1c5c04aadc6d198db0ce7c,
       type: 2}
-    x: 3
+    x: 4
+    y: 2
+    z: 0
+  - tilePrefab: {fileID: 1701192870182704, guid: 4defd269bc1c5c04aadc6d198db0ce7c,
+      type: 2}
+    x: 4
     y: 3
     z: 0
 --- !u!4 &40695495
