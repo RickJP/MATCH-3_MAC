@@ -18,6 +18,13 @@ public class Board : MonoBehaviour
     public GameObject rowBombPrefab;
     public GameObject colorBombPrefab;
 
+    public int maxCollectibles = 3;
+    public int collectibleCount = 0;
+
+    [Range(0, 1)]
+    public float chanceForCollectibles = 0.1f;
+    public GameObject[] collectiblePrefabs;
+
     GameObject m_clickedTileBomb;
     GameObject m_targetTileBomb;
 
@@ -46,6 +53,8 @@ public class Board : MonoBehaviour
         public int x, y, z;
     }
 
+
+
     void Start()
     {
         m_allTiles = new Tile[width, height];
@@ -53,6 +62,9 @@ public class Board : MonoBehaviour
       
         SetupTiles();
         SetupGamePieces();
+
+        List<GamePiece> startingCollectibles = FindAllCollectibles();
+        collectibleCount = startingCollectibles.Count;
 
         SetupCamera();
         FillBoard(fillYOffset, fillMoveTime);
@@ -407,7 +419,7 @@ public class Board : MonoBehaviour
             }
             else
             {
-                if (nextPiece.matchValue == startPiece.matchValue && !matches.Contains(nextPiece))
+                if (nextPiece.matchValue == startPiece.matchValue && !matches.Contains(nextPiece) && nextPiece.matchValue != MatchValue.None)
                 {
                     matches.Add(nextPiece);
                 }
@@ -988,7 +1000,6 @@ public class Board : MonoBehaviour
         return foundPieces;
     }
 
-
     bool IsColorBomb(GamePiece gamePiece)
     {
         Bomb bomb = gamePiece.GetComponent<Bomb>();
@@ -1000,5 +1011,34 @@ public class Board : MonoBehaviour
         return false;
     }
 
+    List<GamePiece> FindCollectiblesAt(int row)
+    {
+        List<GamePiece> foundCollectibles = new List<GamePiece>();
 
+        for (int i = 0; i < width; i++)
+        {
+            if (m_allGamePieces[i, row] != null)
+            {
+                Collectible collectibleComponent = m_allGamePieces[i, row].GetComponent<Collectible>();
+
+                if (collectibleComponent != null)
+                {
+                    foundCollectibles.Add(m_allGamePieces[i, row]);
+                }
+            }
+        }
+        return foundCollectibles;
+    }
+
+    List<GamePiece> FindAllCollectibles()
+    {
+        List<GamePiece> foundCollectibles = new List<GamePiece>();
+
+        for (int i = 0; i < height; i++)
+        {
+            List<GamePiece> collectibleRow = FindCollectiblesAt(i);
+            foundCollectibles = foundCollectibles.Union(collectibleRow).ToList();
+        }
+        return foundCollectibles;
+    }
 }

@@ -161,18 +161,26 @@ MonoBehaviour:
     type: 2}
   colorBombPrefab: {fileID: 1839549366912358, guid: 4d900dd10be924341869187e72d0b7e7,
     type: 2}
+  maxCollectibles: 3
+  collectibleCount: 0
+  chanceForCollectibles: 0.1
+  collectiblePrefabs: []
   swapTime: 0.3
   fillYOffset: 20
   fillMoveTime: 0.5
   startingTiles: []
   startingGamePieces:
-  - prefab: {fileID: 1839549366912358, guid: 4d900dd10be924341869187e72d0b7e7, type: 2}
-    x: 3
-    y: 3
+  - prefab: {fileID: 1119786380334246, guid: f7258c4d4e336b3419e7fffcf6b0d9e5, type: 2}
+    x: 4
+    y: 5
     z: 0
-  - prefab: {fileID: 1839549366912358, guid: 4d900dd10be924341869187e72d0b7e7, type: 2}
-    x: 3
-    y: 4
+  - prefab: {fileID: 1119786380334246, guid: f7258c4d4e336b3419e7fffcf6b0d9e5, type: 2}
+    x: 5
+    y: 5
+    z: 0
+  - prefab: {fileID: 1119786380334246, guid: f7258c4d4e336b3419e7fffcf6b0d9e5, type: 2}
+    x: 6
+    y: 6
     z: 0
 --- !u!4 &40695495
 Transform:
