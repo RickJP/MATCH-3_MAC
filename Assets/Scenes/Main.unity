@@ -142,7 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 7
   height: 9
-  borderSize: 0
+  borderSize: 1
   tileNormalPrefab: {fileID: 1858049583911734, guid: 351fabd265daa1a4aac8fc934474c99b,
     type: 2}
   tileObstaclePrefab: {fileID: 1701192870182704, guid: 4defd269bc1c5c04aadc6d198db0ce7c,
@@ -153,46 +153,44 @@ MonoBehaviour:
   - {fileID: 1920900020424854, guid: ad7b8d126b2a2434f9f7c00fc9ae167b, type: 2}
   - {fileID: 1412870071191450, guid: d192d0c933ea1ca4a9b100e8b8e51b90, type: 2}
   - {fileID: 1765086069392398, guid: 24f430e23037cd0448a805dbc8f6d7ee, type: 2}
+  adjacentBombPrefab: {fileID: 1002806412302036, guid: bd910b492f746ee468632859e03b2c69,
+    type: 2}
+  columnBombPrefab: {fileID: 1006002758523708, guid: f714603935574a74189566f2bad9fa7c,
+    type: 2}
+  rowBombPrefab: {fileID: 1979235832596210, guid: 1d86d864336214e4b8229435649f6c81,
+    type: 2}
   swapTime: 0.3
-  fillYOffset: 10
+  fillYOffset: 20
   fillMoveTime: 0.5
-  startingTiles:
-  - prefab: {fileID: 1112420243198592, guid: f01da3db2035573499743553ee087457, type: 2}
-    x: 2
-    y: 2
-    z: 0
-  - prefab: {fileID: 1112420243198592, guid: f01da3db2035573499743553ee087457, type: 2}
-    x: 2
+  startingTiles: []
+  startingGamePieces:
+  - prefab: {fileID: 1412870071191450, guid: d192d0c933ea1ca4a9b100e8b8e51b90, type: 2}
+    x: 3
     y: 3
     z: 0
-  - prefab: {fileID: 1112420243198592, guid: f01da3db2035573499743553ee087457, type: 2}
-    x: 2
+  - prefab: {fileID: 1412870071191450, guid: d192d0c933ea1ca4a9b100e8b8e51b90, type: 2}
+    x: 3
     y: 4
     z: 0
-  - prefab: {fileID: 1112420243198592, guid: f01da3db2035573499743553ee087457, type: 2}
-    x: 2
+  - prefab: {fileID: 1412870071191450, guid: d192d0c933ea1ca4a9b100e8b8e51b90, type: 2}
+    x: 3
+    y: 6
+    z: 0
+  - prefab: {fileID: 1412870071191450, guid: d192d0c933ea1ca4a9b100e8b8e51b90, type: 2}
+    x: 4
     y: 5
     z: 0
-  - prefab: {fileID: 1000849448964152, guid: 14bff7b3fcfdd39498d42bea13eca85b, type: 2}
-    x: 4
-    y: 2
+  - prefab: {fileID: 1412870071191450, guid: d192d0c933ea1ca4a9b100e8b8e51b90, type: 2}
+    x: 5
+    y: 4
     z: 0
-  - prefab: {fileID: 1000849448964152, guid: 14bff7b3fcfdd39498d42bea13eca85b, type: 2}
-    x: 4
-    y: 3
+  - prefab: {fileID: 1412870071191450, guid: d192d0c933ea1ca4a9b100e8b8e51b90, type: 2}
+    x: 6
+    y: 4
     z: 0
-  startingGamePieces:
-  - prefab: {fileID: 1765086069392398, guid: 24f430e23037cd0448a805dbc8f6d7ee, type: 2}
-    x: 0
-    y: 0
-    z: 0
-  - prefab: {fileID: 1765086069392398, guid: 24f430e23037cd0448a805dbc8f6d7ee, type: 2}
-    x: 0
-    y: 1
-    z: 0
-  - prefab: {fileID: 1765086069392398, guid: 24f430e23037cd0448a805dbc8f6d7ee, type: 2}
-    x: 1
-    y: 2
+  - prefab: {fileID: 1235507716610692, guid: a09f535ea2f42bf4a99c225b9a09a4a4, type: 2}
+    x: 5
+    y: 5
     z: 0
 --- !u!4 &40695495
 Transform:
@@ -254,7 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8074178, g: 0.94285375, b: 0.9632353, a: 1}
+  m_Color: {r: 0.5997629, g: 0.5381704, b: 0.9264706, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
