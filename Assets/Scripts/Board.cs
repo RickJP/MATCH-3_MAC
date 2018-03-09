@@ -15,6 +15,8 @@ public class Board : MonoBehaviour
     public GameObject[] gamePiecePrefabs;
 
     public float swapTime = 0.5f;
+    public int fillYOffset = 10;
+    public float fillMoveTime = 0.5f;
 
     Tile[,] m_allTiles;
     GamePiece[,] m_allGamePieces;
@@ -24,12 +26,15 @@ public class Board : MonoBehaviour
 
     bool m_playerInputEnabled = true;
 
-    public StartingTile[] startingTiles;
+    public StartingObject[] startingTiles;
+    public StartingObject[] startingGamePieces;
+
+    ParticleManager m_particleManager;
 
     [System.Serializable]
-    public class StartingTile
+    public class StartingObject
     {
-        public GameObject tilePrefab;
+        public GameObject prefab;
         public int x, y, z;
     }
 
@@ -40,8 +45,11 @@ public class Board : MonoBehaviour
         m_allGamePieces = new GamePiece[width, height];
       
         SetupTiles();
+        SetupGamePieces();
+
         SetupCamera();
-        FillBoard(10, 0.5f);
+        FillBoard(fillYOffset, fillMoveTime);
+        m_particleManager = GameObject.FindWithTag("ParticleManager").GetComponent<ParticleManager>();
     }
 
     void MakeTile(GameObject prefab, int x, int y, int z = 0)
@@ -61,12 +69,12 @@ public class Board : MonoBehaviour
 
     void SetupTiles()
     {      
-        foreach(StartingTile sTile in startingTiles)
+        foreach(StartingObject sTile in startingTiles)
         {
 
             if (sTile != null)
             {
-                MakeTile(sTile.tilePrefab, sTile.x, sTile.y, sTile.z);
+                MakeTile(sTile.prefab, sTile.x, sTile.y, sTile.z);
             }
         }
 
@@ -93,6 +101,34 @@ public class Board : MonoBehaviour
         float horizontalSize = ((float)width / 2f + (float)borderSize) / aspectRatio;
 
         Camera.main.orthographicSize = (verticalSize > horizontalSize) ? verticalSize : horizontalSize;
+    }
+
+    void SetupGamePieces()
+    {
+        foreach(StartingObject sPiece in startingGamePieces)
+        {
+            if (sPiece != null)
+            {
+                GameObject piece = Instantiate(sPiece.prefab, new Vector3(sPiece.x, sPiece.y, 0), Quaternion.identity) as GameObject;
+                MakeGamePiece(piece, sPiece.x, sPiece.y, fillYOffset, fillMoveTime);
+            }
+        }
+    }
+
+    void MakeGamePiece(GameObject prefab, int x, int y, int falseYOffset = 0, float moveTime = 0.1f)
+    {
+        if (prefab != null && IsWithinBounds(x, y))
+        {
+            prefab.GetComponent<GamePiece>().Init(this);
+            PlaceGamePiece(prefab.GetComponent<GamePiece>(), x, y);
+
+            if (falseYOffset != 0)
+            {
+                prefab.transform.position = new Vector3(x, y + falseYOffset, 0);
+                prefab.GetComponent<GamePiece>().Move(x, y, moveTime);
+            }
+            prefab.transform.parent = transform;
+        }
     }
 
 
@@ -134,21 +170,14 @@ public class Board : MonoBehaviour
 
     GamePiece FillRandomAt(int x, int y, int falseYOffset = 0, float moveTime = 0.1f)
     {
-        GameObject randomPiece = Instantiate(GetRandomGamePiece(), Vector3.zero, Quaternion.identity) as GameObject;
+        if (IsWithinBounds(x, y))
+        { 
+            GameObject randomPiece = Instantiate(GetRandomGamePiece(), Vector3.zero, Quaternion.identity) as GameObject;
 
-        if (randomPiece != null)
-        {
-            randomPiece.GetComponent<GamePiece>().Init(this);
-            PlaceGamePiece(randomPiece.GetComponent<GamePiece>(), x, y);
-
-            if (falseYOffset != 0)
-            {
-                randomPiece.transform.position = new Vector3(x, y + falseYOffset, 0);
-                randomPiece.GetComponent<GamePiece>().Move(x, y, moveTime);
-            }
-            randomPiece.transform.parent = transform;
+            MakeGamePiece(randomPiece, x, y, falseYOffset, moveTime);
 
             return randomPiece.GetComponent<GamePiece>();
+
         }
         return null;
     }
@@ -505,7 +534,7 @@ public class Board : MonoBehaviour
             m_allGamePieces[x, y] = null;
             Destroy(pieceToClear.gameObject);
         }
-        HighlightTileOff(x, y);
+        //HighlightTileOff(x, y);
     }
 
 
@@ -513,8 +542,13 @@ public class Board : MonoBehaviour
     {
         Tile tileToBreak = m_allTiles[x, y];
 
-        if (tileToBreak != null)
+        if (tileToBreak != null && tileToBreak.tileType == TileType.Breakable)
         {
+            if (m_particleManager != null)
+            {
+                m_particleManager.BreakTileFXAt(tileToBreak.breakableValue, x, y, 0);
+            }
+
             tileToBreak.BreakTile();
         }
     }
@@ -549,6 +583,11 @@ public class Board : MonoBehaviour
             if (piece != null)
             {
                 ClearPieceAt(piece.xIndex, piece.yIndex);
+
+                if (m_particleManager != null)
+                {
+                    m_particleManager.ClearPieceFXAt(piece.xIndex, piece.yIndex);
+                }
             }      
         }
     }
@@ -637,7 +676,7 @@ public class Board : MonoBehaviour
             yield return StartCoroutine(RefillRoutine());
             matches = FindAllMatches();
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
         }
         while (matches.Count != 0);
 
@@ -647,7 +686,7 @@ public class Board : MonoBehaviour
 
     IEnumerator RefillRoutine()
     {
-        FillBoard(10, 0.5f);
+        FillBoard(fillYOffset, fillMoveTime);
         yield return null;
     }
 
@@ -656,9 +695,9 @@ public class Board : MonoBehaviour
         List<GamePiece> movingPieces = new List<GamePiece>();
         List<GamePiece> matches = new List<GamePiece>();
 
-        HighlightPieces(gamePieces);
+        //HighlightPieces(gamePieces);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
 
         bool isFinished = false;
 

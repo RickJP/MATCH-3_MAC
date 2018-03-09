@@ -185,6 +185,8 @@
 -define:ENABLE_VSTU
 Assets/Scripts/Board.cs
 Assets/Scripts/GamePiece.cs
+Assets/Scripts/ParticleManager.cs
+Assets/Scripts/ParticlePlayer.cs
 Assets/Scripts/Tile.cs
 -r:"C:\Program Files\Unity\Editor\Data\Mono\lib\mono\unity\System.Runtime.Serialization.dll"
 -r:"C:\Program Files\Unity\Editor\Data\Mono\lib\mono\unity\System.Xml.Linq.dll"

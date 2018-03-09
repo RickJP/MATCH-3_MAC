@@ -302,6 +302,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Board.cs" />
     <Compile Include="Assets\Scripts\GamePiece.cs" />
+    <Compile Include="Assets\Scripts\ParticleManager.cs" />
+    <Compile Include="Assets\Scripts\ParticlePlayer.cs" />
     <Compile Include="Assets\Scripts\Tile.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
