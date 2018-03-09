@@ -192,6 +192,10 @@ MonoBehaviour:
     x: 5
     y: 5
     z: 0
+  - prefab: {fileID: 1545726172010460, guid: f432c3f8dfbf65c458a97d10ba9e7706, type: 2}
+    x: 4
+    y: 7
+    z: 0
 --- !u!4 &40695495
 Transform:
   m_ObjectHideFlags: 0
