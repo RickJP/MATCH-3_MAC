@@ -1,11 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
+
 
 
 public enum BombType
 {
-    None, Column,
+    None,
+    Column,
     Row,
     Adjacent,
     Color

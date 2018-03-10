@@ -1,10 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
+
 
 public enum MatchValue
 {
     Yellow,
+    White,
     Blue,
     Magenta,
     Indigo,
@@ -34,8 +35,6 @@ public class GamePiece : MonoBehaviour {
     };
 
     public MatchValue matchValue;
-
-
 
     public void Init(Board board)
     {

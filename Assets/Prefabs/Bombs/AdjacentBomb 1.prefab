@@ -116,8 +116,8 @@ MonoBehaviour:
   xIndex: 0
   yIndex: 0
   interpolation: 4
-  matchValue: 8
-  bombType: 1
+  matchValue: 9
+  bombType: 3
 --- !u!198 &198401361402507100
 ParticleSystem:
   m_ObjectHideFlags: 1

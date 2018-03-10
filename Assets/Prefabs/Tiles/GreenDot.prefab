@@ -55,7 +55,7 @@ MonoBehaviour:
   xIndex: 0
   yIndex: 0
   interpolation: 4
-  matchValue: 4
+  matchValue: 5
 --- !u!212 &212238143233068928
 SpriteRenderer:
   m_ObjectHideFlags: 1
