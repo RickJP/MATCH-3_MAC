@@ -47,6 +47,8 @@ public class Board : MonoBehaviour
    	public int fillYOffset = 10;
     public float fillMoveTime = 0.5f;
 
+    int m_scoreMultiplier = 0;
+
     [System.Serializable]
     public class StartingObject
     {
@@ -648,6 +650,14 @@ public class Board : MonoBehaviour
             {
                 ClearPieceAt(piece.xIndex, piece.yIndex);
 
+                int bonus = 0;
+
+                if (gamePieces.Count >= 4)
+                {
+                    bonus = 20;
+                }
+                piece.ScorePoints(m_scoreMultiplier);
+
                 if (m_particleManager != null)
                 {
                     if (bombedPieces.Contains(piece))
@@ -757,15 +767,17 @@ public class Board : MonoBehaviour
         StartCoroutine(ClearAndRefillBoardRoutine(gamePieces));
     }
 
-
-
     IEnumerator ClearAndRefillBoardRoutine(List<GamePiece> gamePieces)
     {
         m_playerInputEnabled = false;       // allows player to switch tiles only once
         List<GamePiece> matches = gamePieces;
 
+        m_scoreMultiplier = 0;
+
         do
         {
+            m_scoreMultiplier++;
+
             yield return StartCoroutine(ClearAndCollapseRoutine(matches));
             yield return null;
 
@@ -779,10 +791,6 @@ public class Board : MonoBehaviour
 
         m_playerInputEnabled = true;
     }
-
-
-
-    
 
 
     IEnumerator ClearAndCollapseRoutine(List<GamePiece> gamePieces)
@@ -850,37 +858,18 @@ public class Board : MonoBehaviour
             } 
             else
             {
+                m_scoreMultiplier++;
                 yield return StartCoroutine(ClearAndCollapseRoutine(matches));
             }
         }
         yield return null;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 	IEnumerator RefillRoutine()
     {
         FillBoard(fillYOffset, fillMoveTime);
         yield return null;
     }
-
-
-
-
-
-   
-
-	
 
 	bool IsCollapsed(List<GamePiece> gamePieces)
     {

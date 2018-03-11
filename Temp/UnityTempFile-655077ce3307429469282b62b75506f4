@@ -189,6 +189,9 @@ Assets/Scripts/Collectible.cs
 Assets/Scripts/GamePiece.cs
 Assets/Scripts/ParticleManager.cs
 Assets/Scripts/ParticlePlayer.cs
+Assets/Scripts/ScoreManager.cs
+Assets/Scripts/ScreenFader.cs
+Assets/Scripts/Singleton.cs
 Assets/Scripts/Tile.cs
 -r:"C:\Program Files\Unity\Editor\Data\Mono\lib\mono\unity\System.Runtime.Serialization.dll"
 -r:"C:\Program Files\Unity\Editor\Data\Mono\lib\mono\unity\System.Xml.Linq.dll"
