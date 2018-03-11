@@ -49,6 +49,9 @@ public class Board : MonoBehaviour
 
     int m_scoreMultiplier = 0;
 
+
+
+
     [System.Serializable]
     public class StartingObject
     {
@@ -62,7 +65,13 @@ public class Board : MonoBehaviour
     {
         m_allTiles = new Tile[width, height];
         m_allGamePieces = new GamePiece[width, height];
-      
+
+        m_particleManager = GameObject.FindWithTag("ParticleManager").GetComponent<ParticleManager>();
+
+    }
+
+    public void SetupBoard()
+    {
         SetupTiles();
         SetupGamePieces();
 
@@ -71,9 +80,6 @@ public class Board : MonoBehaviour
 
         SetupCamera();
         FillBoard(fillYOffset, fillMoveTime);
-
-        m_particleManager = GameObject.FindWithTag("ParticleManager").GetComponent<ParticleManager>();
-
     }
 
     void MakeTile(GameObject prefab, int x, int y, int z = 0)
@@ -378,6 +384,13 @@ public class Board : MonoBehaviour
                 }
                 else
                 {
+
+                    if (GameManager.Instance != null)
+                    {
+                        GameManager.Instance.movesLeft--;
+                        GameManager.Instance.UpdateMoves();
+                    }
+
                     yield return new WaitForSeconds(swapTime);
                     
                     Vector2 swipeDirection = new Vector2(targetTile.xIndex - clickedTile.xIndex, targetTile.yIndex - clickedTile.yIndex);
