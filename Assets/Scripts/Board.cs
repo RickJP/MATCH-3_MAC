@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+
+// REMOVES WARNING FOR assigned but its value is never used
+#pragma warning disable 0219
+
 public class Board : MonoBehaviour
 {
     public int width;
@@ -84,6 +88,7 @@ public class Board : MonoBehaviour
 
     void MakeTile(GameObject prefab, int x, int y, int z = 0)
     {
+
         if (prefab != null && IsWithinBounds(x, y))
         {
             GameObject tile = Instantiate(prefab, new Vector3(x, y, z), Quaternion.identity) as GameObject;
@@ -93,6 +98,8 @@ public class Board : MonoBehaviour
             tile.transform.parent = transform;
             m_allTiles[x, y].Init(x, y, this);
         }
+
+
     }
 
  	void MakeGamePiece(GameObject prefab, int x, int y, int falseYOffset = 0, float moveTime = 0.1f)
@@ -127,11 +134,12 @@ public class Board : MonoBehaviour
 
 
     void SetupTiles()
-    {      
-        foreach(StartingObject sTile in startingTiles)
+    {
+
+        foreach (StartingObject sTile in startingTiles)
         {
 
-            if (sTile != null)
+            if (sTile != null && IsWithinBounds(sTile.x, sTile.y))
             {
                 MakeTile(sTile.prefab, sTile.x, sTile.y, sTile.z);
             }
@@ -152,11 +160,13 @@ public class Board : MonoBehaviour
     {
         foreach(StartingObject sPiece in startingGamePieces)
         {
-            if (sPiece != null)
+            if (sPiece != null && IsWithinBounds(sPiece.x, sPiece.y))
             {
+
                 GameObject piece = Instantiate(sPiece.prefab, new Vector3(sPiece.x, sPiece.y, 0), Quaternion.identity) as GameObject;
                 MakeGamePiece(piece, sPiece.x, sPiece.y, fillYOffset, fillMoveTime);
             }
+           
         }
     }
     void SetupCamera()
