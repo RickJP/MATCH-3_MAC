@@ -36,7 +36,7 @@ public class RectXFormMover : MonoBehaviour {
         }
 
         bool reachedDestination = false;
-        float elapsedaTime = 0f;
+        float elapsedTime = 0f;
         m_isMoving = false;
 
         while (!reachedDestination)
@@ -47,9 +47,9 @@ public class RectXFormMover : MonoBehaviour {
                 break;
             }
 
-            elapsedaTime += Time.deltaTime;
+            elapsedTime += Time.deltaTime;
 
-            float t = Mathf.Clamp(elapsedaTime / timeToMove, 0f, 1f);
+            float t = Mathf.Clamp(elapsedTime / timeToMove, 0f, 1f);
             t = t * t * t * (t * (t * 6 - 15) + 10);
 
             if (m_rectXForm != null) {

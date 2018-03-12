@@ -13,9 +13,16 @@ public class GameManager : Singleton<GameManager> {
     public Text levelNameText;
     public Text movesLeftText;
 
+    public MessageWindow messageWindow;
+
     bool m_isReadyToBegin = false;
     bool m_isGameOver = false;
     bool m_isWinner = false;
+    bool m_isReadyToReload = false;
+
+    public Sprite winIcon;
+    public Sprite loseIcon;
+    public Sprite goalIcon;
 
     Board m_board;
 
@@ -50,8 +57,21 @@ public class GameManager : Singleton<GameManager> {
         yield return StartCoroutine("EndGameRoutine");
     }
 
+
+    public void BeginGame()
+    {
+        m_isReadyToBegin = true;
+    }
+
     IEnumerator StartGameRoutine()
     {
+
+        if (messageWindow != null)
+        {
+            messageWindow.GetComponent<RectXFormMover>().MoveOn();
+            messageWindow.ShowMessage(goalIcon, "score goal\n" + scoreGoal.ToString(), "start");           
+        }
+
         while (!m_isReadyToBegin)
         {
             yield return null;
@@ -74,6 +94,16 @@ public class GameManager : Singleton<GameManager> {
     {
         while (!m_isGameOver)
         {
+
+            if (ScoreManager.Instance != null)
+            {
+                if (ScoreManager.Instance.CurrentScore >= scoreGoal)
+                {
+                    m_isGameOver = true;
+                    m_isWinner = true;
+                }
+            } 
+
             if (movesLeft == 0)
             {
                 m_isGameOver = true;
@@ -86,20 +116,40 @@ public class GameManager : Singleton<GameManager> {
 
     IEnumerator EndGameRoutine()
     {
+        m_isReadyToReload = false;
+
+       
+
+        if (m_isWinner)
+        {
+         if (messageWindow != null)
+            {
+                messageWindow.GetComponent<RectXFormMover>().MoveOn();
+                messageWindow.ShowMessage(winIcon, "YOU WON!", "OK");
+            }   
+        } else
+        {
+            messageWindow.GetComponent<RectXFormMover>().MoveOn();
+            messageWindow.ShowMessage(loseIcon, "YOU LOST!", "OK");
+        }
+
+        yield return new WaitForSeconds(1f);
         if (screenFader != null)
         {
             screenFader.FadeOn();
         }
 
-        if (m_isWinner)
+        while (!m_isReadyToReload)
         {
-            Debug.Log("You won!");
-        } else
-        {
-            Debug.Log("You lost!");
+            yield return null;
         }
-        yield return null;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void ReloadScene()
+    {
+        m_isReadyToReload = true;
+    }
 
 }

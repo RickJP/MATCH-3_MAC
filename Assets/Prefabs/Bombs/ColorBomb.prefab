@@ -86,8 +86,9 @@ MonoBehaviour:
   xIndex: 0
   yIndex: 0
   interpolation: 4
-  matchValue: 8
+  matchValue: 9
   scoreValue: 1000
+  clearSound: {fileID: 8300000, guid: 8743038399aa64c5db230df6c26f4b71, type: 3}
   bombType: 4
 --- !u!198 &198438500823283302
 ParticleSystem:
@@ -3441,7 +3442,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 541d762c429c9684e9c5d546b6f74968, type: 2}
+  - {fileID: 2100000, guid: 0a258a4b314f5524baa2833e9e31787e, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0

@@ -30,14 +30,14 @@ public class Singleton<T> : MonoBehaviour where T: MonoBehaviour {
         if (m_instance == null)
         {
             m_instance = this as T;
-            transform.parent = null;
+            //transform.parent = null;
             /*
             If you are using persistent Singletons but still want to parent your Singleton to a 
             null object like "Managers" to stay organized, you will need to change the transform 
             parent to the root level before invoking DontDestroyOnLoad.  Otherwise, you will get 
             a warning and Unity will NOT make the object persistent.         
              */
-            DontDestroyOnLoad(this.gameObject);   //  DontDestroyOnLoad will only work for objects at the root level.  
+            //DontDestroyOnLoad(this.gameObject);   //  DontDestroyOnLoad will only work for objects at the root level.  
         }
         else
         {

@@ -7,6 +7,15 @@ public class ScoreManager : Singleton<ScoreManager> {
 
 
     int m_currentScore = 0;
+    public int CurrentScore
+    {
+        get
+        {
+            return m_currentScore;
+        }
+    }
+
+
     int m_counterValue = 0;
     int m_increment = 5;
 

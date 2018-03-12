@@ -17,6 +17,9 @@ public enum MatchValue
     None
 };
 
+
+
+
 public class GamePiece : MonoBehaviour {
 
     public int xIndex, yIndex;
@@ -37,6 +40,8 @@ public class GamePiece : MonoBehaviour {
     public MatchValue matchValue;
 
     public int scoreValue = 20;
+
+    public AudioClip clearSound;
 
     public void Init(Board board)
     {
@@ -160,6 +165,11 @@ public class GamePiece : MonoBehaviour {
         if (ScoreManager.Instance != null )
         {
             ScoreManager.Instance.AddScore(scoreValue * multiplier + bonus);
+        }
+
+        if (SoundManager.Instance != null )
+        {
+            SoundManager.Instance.PlayClipAtPoint(clearSound, Vector3.zero.normalized, SoundManager.Instance.fxVolume);
         }
     }
 }
