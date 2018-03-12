@@ -142,50 +142,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 7
   height: 7
-  borderSize: 2
+  borderSize: 1
   tileNormalPrefab: {fileID: 1858049583911734, guid: 351fabd265daa1a4aac8fc934474c99b,
     type: 2}
   tileObstaclePrefab: {fileID: 1701192870182704, guid: 4defd269bc1c5c04aadc6d198db0ce7c,
     type: 2}
   gamePiecePrefabs:
-  - {fileID: 1765086069392398, guid: 24f430e23037cd0448a805dbc8f6d7ee, type: 2}
-  - {fileID: 1705520462860122, guid: 6a33ac6d7dd92cc40b53559fb7bd9114, type: 2}
-  - {fileID: 1412870071191450, guid: d192d0c933ea1ca4a9b100e8b8e51b90, type: 2}
-  - {fileID: 1920900020424854, guid: ad7b8d126b2a2434f9f7c00fc9ae167b, type: 2}
-  - {fileID: 1855279104669944, guid: 7fff33509ba1d5a4493628667d41f91c, type: 2}
-  adjacentBombPrefab: {fileID: 1826615185491848, guid: 40f3d3273f92095469e646c1acc1418e,
-    type: 2}
-  columnBombPrefab: {fileID: 1006002758523708, guid: f714603935574a74189566f2bad9fa7c,
-    type: 2}
-  rowBombPrefab: {fileID: 1979235832596210, guid: d1054bc20b85a304a8edf746607726ad,
-    type: 2}
-  colorBombPrefab: {fileID: 1839549366912358, guid: 4d900dd10be924341869187e72d0b7e7,
+  - {fileID: 1764584299026588, guid: d25f2e53e91ce49bd99d368bec39987a, type: 2}
+  - {fileID: 1616169278628932, guid: d8220af17d71d4a7b91d94fdb37f90e0, type: 2}
+  - {fileID: 1664362004353522, guid: ded3823fda2b64d07a29783e0ce9acc9, type: 2}
+  - {fileID: 1372902284518312, guid: ddd7ecb364d034ad295c2ea9c8df1999, type: 2}
+  - {fileID: 1282329895864240, guid: 16eff60049fa742e09c4e037182057a2, type: 2}
+  adjacentBombPrefabs:
+  - {fileID: 1452975630026916, guid: 1dc7b4a635eee4b549f0814d0edb9f96, type: 2}
+  - {fileID: 1582761539138338, guid: d1b9bd69ce20946238d78d959914a26e, type: 2}
+  - {fileID: 1191681590145648, guid: 906f49d97f93b477489bd1849f2fb8c1, type: 2}
+  - {fileID: 1830951442441018, guid: fdbb51f6ad6d845aab3b4d2d03abd482, type: 2}
+  - {fileID: 1017203772300780, guid: a03dc1ba3686c43249803d14a0fd5ac1, type: 2}
+  - {fileID: 1486871965305524, guid: 419acdcadc50a4c448bf98d63ff96eb6, type: 2}
+  - {fileID: 1885492271152382, guid: a64e048dc8a8c42e6a7b2a2bf782fe2e, type: 2}
+  columnBombPrefabs:
+  - {fileID: 1908514655826638, guid: ad3338ded80f54cf2bd1bea0c0fb442a, type: 2}
+  - {fileID: 1790440890349500, guid: 4a41b0bcc2bb04fcea7fb556dfb6414d, type: 2}
+  - {fileID: 1724156449574800, guid: 19a7732910c9c477faa1817d9173ac70, type: 2}
+  - {fileID: 1799463149390038, guid: f4570d1955bf44e5a965b20e1e4c0784, type: 2}
+  - {fileID: 1645854744761272, guid: 50f67aa52721c432292ab73e8c66e029, type: 2}
+  - {fileID: 1155086736675008, guid: b16155b21296c413ca8ae934bdb52497, type: 2}
+  - {fileID: 1539352131500558, guid: 33250037397c5421aa15ccfbad07bc81, type: 2}
+  rowBombPrefabs:
+  - {fileID: 1544045371057092, guid: 622c9ee5c4d1549b88e79b05f6b0f66a, type: 2}
+  - {fileID: 1907005101510582, guid: 6f4de61a3d8da4e15b79a7404c1c644b, type: 2}
+  - {fileID: 1819874243754648, guid: 904197c7b70654987882987758dc32e6, type: 2}
+  - {fileID: 1812521708440114, guid: 9c5823e577fcb4da09754ec71ead0d63, type: 2}
+  - {fileID: 1943580077875270, guid: 0c945f22ccdb94d759ebc151932a5581, type: 2}
+  - {fileID: 1653714453623224, guid: 5207ba130b8b3488fb3a9a1b290d0efb, type: 2}
+  - {fileID: 1204806815848130, guid: 27d221c0220a340f9b8f7d8b7fcb5a25, type: 2}
+  colorBombPrefab: {fileID: 1000013338762844, guid: 1a1602c69ff0542d7905e28330aca523,
     type: 2}
   maxCollectibles: 3
   collectibleCount: 1
   chanceForCollectible: 0.473
   collectiblePrefabs:
-  - {fileID: 1119786380334246, guid: f7258c4d4e336b3419e7fffcf6b0d9e5, type: 2}
-  - {fileID: 1411210148767638, guid: 86b105f8a88a0d443ad4e8132c59a247, type: 2}
+  - {fileID: 1000010844454024, guid: 3cc39e0b689e449179a99ac4144c4d3c, type: 2}
+  - {fileID: 1000011192920742, guid: 39d7e8803a8074f13adfcbe5567fefca, type: 2}
   swapTime: 0.3
   startingTiles: []
-  startingGamePieces:
-  - prefab: {fileID: 1411210148767638, guid: 86b105f8a88a0d443ad4e8132c59a247, type: 2}
-    x: 4
-    y: 8
-    z: 0
-  - prefab: {fileID: 1997018841927994, guid: 77808c85bdc07bb42afab011215b1004, type: 2}
-    x: 4
-    y: 5
-    z: 0
-  - prefab: {fileID: 1412870071191450, guid: d192d0c933ea1ca4a9b100e8b8e51b90, type: 2}
-    x: 4
-    y: 4
-    z: 0
-  - prefab: {fileID: 1412870071191450, guid: d192d0c933ea1ca4a9b100e8b8e51b90, type: 2}
-    x: 5
-    y: 6
-    z: 0
+  startingGamePieces: []
   fillYOffset: 20
   fillMoveTime: 0.5
 --- !u!4 &40695495
@@ -567,6 +569,32 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1176676768}
+    - target: {fileID: 114798660715601158, guid: efe26785f1751c144af399c975957223,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3d2dd5d4046c2a449963a75b9eeead1c,
+        type: 3}
+    - target: {fileID: 114798660715601158, guid: efe26785f1751c144af399c975957223,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.87224305
+      objectReference: {fileID: 0}
+    - target: {fileID: 114798660715601158, guid: efe26785f1751c144af399c975957223,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.85786116
+      objectReference: {fileID: 0}
+    - target: {fileID: 114798660715601158, guid: efe26785f1751c144af399c975957223,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.9485294
+      objectReference: {fileID: 0}
+    - target: {fileID: 114798660715601158, guid: efe26785f1751c144af399c975957223,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 0.522
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: efe26785f1751c144af399c975957223, type: 2}
   m_IsPrefabParent: 0
@@ -637,12 +665,22 @@ Prefab:
     - target: {fileID: 114629511132459612, guid: e65b05070cfc5b14eb0e6d500dbd430a,
         type: 2}
       propertyPath: movesLeft
-      value: 2
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 114629511132459612, guid: e65b05070cfc5b14eb0e6d500dbd430a,
         type: 2}
       propertyPath: scoreGoal
-      value: 150
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114820037751311298, guid: e65b05070cfc5b14eb0e6d500dbd430a,
+        type: 2}
+      propertyPath: musicVolume
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 114820037751311298, guid: e65b05070cfc5b14eb0e6d500dbd430a,
+        type: 2}
+      propertyPath: fxVolume
+      value: 0.819
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e65b05070cfc5b14eb0e6d500dbd430a, type: 2}

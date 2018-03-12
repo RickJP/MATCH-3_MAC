@@ -14,6 +14,8 @@ public enum MatchValue
     Red,
     Cyan,
     Wild,
+    Purple,
+    Orange,
     None
 };
 
