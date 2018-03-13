@@ -19,15 +19,23 @@ public class GameManager : Singleton<GameManager> {
     bool m_isGameOver = false;
     bool m_isWinner = false;
     bool m_isReadyToReload = false;
+    bool m_isGameFinished = false;
 
     public Sprite winIcon;
     public Sprite loseIcon;
     public Sprite goalIcon;
 
+
+    int activeScene;
+    int sceneCount;
+    int nextLevel = 0;
+
     Board m_board;
 
 	void Start ()
     {
+        int sceneCount = SceneManager.sceneCount;
+
         m_board = GameObject.FindObjectOfType<Board>().GetComponent<Board>();
 
         Scene scene = SceneManager.GetActiveScene();
@@ -59,7 +67,7 @@ public class GameManager : Singleton<GameManager> {
 
 
     public void BeginGame()
-    {
+    {    
         m_isReadyToBegin = true;
     }
 
@@ -119,7 +127,6 @@ public class GameManager : Singleton<GameManager> {
         m_isReadyToReload = false;
 
        
-
         if (m_isWinner)
         {
          if (messageWindow != null)
@@ -127,10 +134,21 @@ public class GameManager : Singleton<GameManager> {
                 messageWindow.GetComponent<RectXFormMover>().MoveOn();
                 messageWindow.ShowMessage(winIcon, "YOU WON!", "OK");
             }   
+
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.PlayWinSound();
+            }
+
         } else
         {
             messageWindow.GetComponent<RectXFormMover>().MoveOn();
             messageWindow.ShowMessage(loseIcon, "YOU LOST!", "OK");
+
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.PlayWinSound();
+            }
         }
 
         yield return new WaitForSeconds(1f);
@@ -144,7 +162,52 @@ public class GameManager : Singleton<GameManager> {
             yield return null;
         }
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        activeScene = SceneManager.GetActiveScene().buildIndex;
+        sceneCount = SceneManager.sceneCountInBuildSettings;
+        nextLevel = ChangeLevel(activeScene, 1);
+
+        //print("ACTIVE SCENE: " + activeScene + "SCENE COUNT: " + sceneCount + "NEXT LEVEL: " + nextLevel);
+
+        
+        if (!m_isWinner)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else if (nextLevel < sceneCount)
+        {
+            SceneManager.LoadScene(nextLevel);
+        }
+        else
+        {
+            m_isGameFinished = true;
+
+            if (messageWindow != null)
+            {
+                if (messageWindow != null)
+                {
+                    messageWindow.GetComponent<RectXFormMover>().MoveOn();
+                    messageWindow.ShowMessage(goalIcon, "You Finished the Game with a score of: " + ScoreManager.Instance.CurrentScore.ToString(), "close");
+
+
+                    yield return new WaitForSeconds(1f);
+                    if (screenFader != null)
+                    {
+                        screenFader.FadeOn();
+                    }
+
+                    SceneManager.LoadScene(0);
+                }
+            }
+        }
+      
+    }
+
+
+    
+
+    public int ChangeLevel(int activeScene, int amount)
+    {
+        return activeScene + amount;
     }
 
     public void ReloadScene()

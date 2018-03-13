@@ -1,0 +1,2 @@
+A:\UNITY PROJECTS\MATCH 3\Temp\UnityVS_obj\Debug\MATCH 3.csprojResolveAssemblyReference.cache
+A:\UNITY PROJECTS\MATCH 3\Temp\UnityVS_obj\Debug\MATCH 3.csproj.CoreCompileInputs.cache
