@@ -60,9 +60,7 @@ public class GamePiece : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             Move((int)transform.position.x - 3, (int)transform.position.y, 0.5f);
-        }
-     
-
+        }    
     }
 	
 

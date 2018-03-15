@@ -665,12 +665,12 @@ Prefab:
     - target: {fileID: 114629511132459612, guid: e65b05070cfc5b14eb0e6d500dbd430a,
         type: 2}
       propertyPath: movesLeft
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114629511132459612, guid: e65b05070cfc5b14eb0e6d500dbd430a,
         type: 2}
       propertyPath: scoreGoal
-      value: 1500
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 114820037751311298, guid: e65b05070cfc5b14eb0e6d500dbd430a,
         type: 2}

@@ -19,7 +19,18 @@ public class GameManager : Singleton<GameManager> {
     bool m_isGameOver = false;
     bool m_isWinner = false;
     bool m_isReadyToReload = false;
-    bool m_isGameFinished = false;
+    //bool m_isGameFinished = false;
+
+
+	public bool IsGameOver
+	{
+		get {
+			return m_isGameOver;
+		}
+		set {
+			m_isGameOver = value;
+		}
+	}
 
     public Sprite winIcon;
     public Sprite loseIcon;
@@ -62,6 +73,8 @@ public class GameManager : Singleton<GameManager> {
     {
         yield return StartCoroutine("StartGameRoutine");
         yield return StartCoroutine("PlayGameRoutine");
+
+		yield return StartCoroutine ("WaitForBoardRoutine", 0.5f);
         yield return StartCoroutine("EndGameRoutine");
     }
 
@@ -122,6 +135,22 @@ public class GameManager : Singleton<GameManager> {
         }
     }
 
+
+	IEnumerator WaitForBoardRoutine(float delay = 0f) 
+	{
+		if (m_board != null) 
+		{
+			yield return new WaitForSeconds (m_board.swapTime);
+			while (m_board.isRefilling) 
+			{
+				yield return null;
+
+			}
+		}
+		yield return new WaitForSeconds (delay);
+	}
+		
+
     IEnumerator EndGameRoutine()
     {
         m_isReadyToReload = false;
@@ -179,7 +208,7 @@ public class GameManager : Singleton<GameManager> {
         }
         else
         {
-            m_isGameFinished = true;
+            //m_isGameFinished = true;
 
             if (messageWindow != null)
             {
