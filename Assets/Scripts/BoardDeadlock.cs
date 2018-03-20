@@ -96,13 +96,13 @@ public class BoardDeadlock : MonoBehaviour
 				matches = matches.Union(neighbors).ToList ();
 			}
 
-					if (matches.Count >= listLength)
-					{
-						string rowColStr = (checkRow) ? " row" : " column ";
-//						Debug.Log("======= AVALIABLE MOVE ======================");
-//						Debug.Log("Move " + matches[0].matchValue + " piece to " + unmatchedPiece.xIndex + "," + unmatchedPiece.yIndex + " to form matching " + rowColStr);
-						return true;
-					}
+			if (matches.Count >= listLength)
+			{
+				string rowColStr = (checkRow) ? " row" : " column ";
+				Debug.Log("======= AVALIABLE MOVE ======================");
+				Debug.Log("Move " + matches[0].matchValue + " piece to " + unmatchedPiece.xIndex + "," + unmatchedPiece.yIndex + " to form matching " + rowColStr);
+				return true;
+			}
 		}
 		return false;
 	}

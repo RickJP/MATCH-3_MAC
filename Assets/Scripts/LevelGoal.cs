@@ -9,13 +9,15 @@ public abstract class LevelGoal : Singleton<LevelGoal>
     public int[] scoreGoals = new int[3] { 1000, 2000, 3000 };
 
     public int movesLeft = 30;
+    public int timeLeft = 60;
+
 
 	void Start () 
     {
         Init();
 	}
 
-    public void Init() 
+    void Init() 
     {
         scoreStars = 0;
 
@@ -29,7 +31,7 @@ public abstract class LevelGoal : Singleton<LevelGoal>
     }
 
 
-    public int UpdateScore(int score)
+    int UpdateScore(int score)
     {
         for (int i = 0; i < scoreGoals.Length; i++)
         {
@@ -41,8 +43,7 @@ public abstract class LevelGoal : Singleton<LevelGoal>
         }
         return scoreGoals.Length;
     }
-
-
+      
     public void UpdateScoreStars(int score)
     {
         scoreStars = UpdateScore(score);

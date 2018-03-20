@@ -17,7 +17,7 @@ public class GameManager : Singleton<GameManager> {
     public Text levelNameText;
     public Text movesLeftText;
 
-    public MessageWindow messageWindow;
+    public MessageWindow messageWindow, endLevelMessageWindow;
 
     bool m_isReadyToBegin = false;
     bool m_isGameOver = false;
@@ -40,6 +40,7 @@ public class GameManager : Singleton<GameManager> {
     public Sprite loseIcon;
     public Sprite goalIcon;
 
+    public ScoreMeter scoreMeter;
 
     int activeScene;
     int sceneCount;
@@ -47,22 +48,31 @@ public class GameManager : Singleton<GameManager> {
 
     Board m_board;
     LevelGoal m_levelGoal;
+    LevelGoalTimed m_levelGoalTimed;
 
     public override void Awake()
     {
         base.Awake();
 
         m_levelGoal = GetComponent<LevelGoal>();
+        m_levelGoalTimed = GetComponent<LevelGoalTimed>();
 
         m_board = GameObject.FindObjectOfType<Board>().GetComponent<Board>();
+
     }
 
 	void Start ()
     {
+
+        if (scoreMeter != null)
+        {
+            print("Setup stars");
+            scoreMeter.SetupStars(m_levelGoal);
+        }
+
+
         int sceneCount = SceneManager.sceneCount;
-
-
-
+       
         Scene scene = SceneManager.GetActiveScene();
         if (levelNameText.text != null)
         {
@@ -72,6 +82,7 @@ public class GameManager : Singleton<GameManager> {
         m_levelGoal.movesLeft++;
         UpdateMoves();
 
+
         StartCoroutine(ExecuteGameLoop());
 	}
 	
@@ -79,12 +90,24 @@ public class GameManager : Singleton<GameManager> {
     public void UpdateMoves()
     {
 
-        m_levelGoal.movesLeft--;
-
-        if (movesLeftText != null)
+        if (m_levelGoalTimed == null) 
         {
-            movesLeftText.text = m_levelGoal.movesLeft.ToString();
+            m_levelGoal.movesLeft--;
+
+            if (movesLeftText != null)
+            {
+                movesLeftText.text = m_levelGoal.movesLeft.ToString();
+            }
         }
+        else 
+        {
+            if (movesLeftText != null)
+            {
+                movesLeftText.text = "\u221E";    // infinity symbol
+                movesLeftText.fontSize = 70;
+            }
+        }
+
     }
 
     IEnumerator ExecuteGameLoop()
@@ -131,6 +154,12 @@ public class GameManager : Singleton<GameManager> {
     }
     IEnumerator PlayGameRoutine()
     {
+        if (m_levelGoalTimed != null) 
+        {
+            m_levelGoalTimed.StartCountdown();
+        }
+
+
         while (!m_isGameOver)
         {
 
@@ -202,7 +231,7 @@ public class GameManager : Singleton<GameManager> {
         sceneCount = SceneManager.sceneCountInBuildSettings;
         nextLevel = ChangeLevel(activeScene, 1);
 
-        //print("ACTIVE SCENE: " + activeScene + "SCENE COUNT: " + sceneCount + "NEXT LEVEL: " + nextLevel);
+//        print("ACTIVE SCENE: " + activeScene + "SCENE COUNT: " + sceneCount + "NEXT LEVEL: " + nextLevel);
 
         
         if (!m_isWinner)
@@ -221,8 +250,8 @@ public class GameManager : Singleton<GameManager> {
             {
                 if (messageWindow != null)
                 {
-                    messageWindow.GetComponent<RectXFormMover>().MoveOn();
-                    messageWindow.ShowMessage(goalIcon, "You Finished the Game with a score of: " + ScoreManager.Instance.CurrentScore.ToString(), "close");
+                    endLevelMessageWindow.GetComponent<RectXFormMover>().MoveOn();
+                    endLevelMessageWindow.ShowMessage(goalIcon, "You Finished the Game with a score of: " + ScoreManager.Instance.CurrentScore.ToString(), "Next Level");
 
 
                     yield return new WaitForSeconds(1f);
@@ -258,6 +287,13 @@ public class GameManager : Singleton<GameManager> {
         {
             ScoreManager.Instance.AddScore(piece.scoreValue * multiplier + bonus);
             m_levelGoal.UpdateScoreStars(ScoreManager.Instance.CurrentScore);
+
+
+            if (scoreMeter != null) 
+            {
+                scoreMeter.UpdateScoreMeter(ScoreManager.Instance.CurrentScore, m_levelGoal.scoreStars);
+            }
+
         }
 
         if (SoundManager.Instance != null && piece.clearSound != null)

@@ -61,15 +61,19 @@
      <Compile Include="Assets\Scripts\GamePiece.cs" />
      <Compile Include="Assets\Scripts\LevelGoal.cs" />
      <Compile Include="Assets\Scripts\LevelGoalScored.cs" />
+     <Compile Include="Assets\Scripts\LevelGoalTimed.cs" />
      <Compile Include="Assets\Scripts\MessageWindow.cs" />
      <Compile Include="Assets\Scripts\ParticleManager.cs" />
      <Compile Include="Assets\Scripts\ParticlePlayer.cs" />
      <Compile Include="Assets\Scripts\RectXFormMover.cs" />
      <Compile Include="Assets\Scripts\ScoreManager.cs" />
+     <Compile Include="Assets\Scripts\ScoreMeter.cs" />
+     <Compile Include="Assets\Scripts\ScoreStar.cs" />
      <Compile Include="Assets\Scripts\ScreenFader.cs" />
      <Compile Include="Assets\Scripts\Singleton.cs" />
      <Compile Include="Assets\Scripts\SoundManager.cs" />
      <Compile Include="Assets\Scripts\Tile.cs" />
+     <Compile Include="Assets\Scripts\Timer.cs" />
  <Reference Include="UnityEngine.UIAutomation">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>
  </Reference>
