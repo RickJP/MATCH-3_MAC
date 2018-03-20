@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4629842533951994}
   - component: {fileID: 114629511132459612}
+  - component: {fileID: 114040287012618912}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -178,6 +179,21 @@ MonoBehaviour:
     type: 2}
   bombFXPrefab: {fileID: 1024853201100824, guid: 840957ad6f728474886ed32bc40d0871,
     type: 2}
+--- !u!114 &114040287012618912
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1038520880749874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81c69ec8737ec45f4bf584d3fec1bede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreStars: 0
+  scoreGoals: e8030000d0070000b80b0000
+  movesLeft: 30
+  timeLeft: 60
 --- !u!114 &114379260931759660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,15 +218,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d794a95611818749aa5dab3265bb2f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movesLeft: 30
-  scoreGoal: 10000
   screenFader: {fileID: 0}
   levelNameText: {fileID: 0}
   movesLeftText: {fileID: 0}
   messageWindow: {fileID: 0}
+  endLevelMessageWindow: {fileID: 0}
   winIcon: {fileID: 21300000, guid: d2813ef59efb6814e8afc6f892b25590, type: 3}
   loseIcon: {fileID: 21300000, guid: 716ad3bf3fcf8da44b5f22e41fe05137, type: 3}
   goalIcon: {fileID: 21300000, guid: b30e989b7004c084ea5318d92cc40840, type: 3}
+  scoreMeter: {fileID: 0}
 --- !u!114 &114820037751311298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -238,7 +254,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6dce900c6b57748dbb2ee112588b2bd9, type: 3}
   - {fileID: 8300000, guid: 56e813bd88354448fb9f0a52536449a1, type: 3}
   - {fileID: 8300000, guid: eadcfb9a0c2cb4bea8112ac470640c8e, type: 3}
-  musicVolume: 0.4
-  fxVolume: 0.8
+  musicVolume: 0.35
+  fxVolume: 0.819
   lowPitch: 0.95
   highPitch: 1.05

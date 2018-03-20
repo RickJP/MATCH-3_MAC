@@ -56,10 +56,12 @@
      <Compile Include="Assets\Scripts\BoardShuffler.cs" />
      <Compile Include="Assets\Scripts\Bomb.cs" />
      <Compile Include="Assets\Scripts\Collectible.cs" />
+     <Compile Include="Assets\Scripts\CollectionGoal.cs" />
      <Compile Include="Assets\Scripts\FinishedGameMessageWindow.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\GamePiece.cs" />
      <Compile Include="Assets\Scripts\LevelGoal.cs" />
+     <Compile Include="Assets\Scripts\LevelGoalCollected.cs" />
      <Compile Include="Assets\Scripts\LevelGoalScored.cs" />
      <Compile Include="Assets\Scripts\LevelGoalTimed.cs" />
      <Compile Include="Assets\Scripts\MessageWindow.cs" />
