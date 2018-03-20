@@ -6,7 +6,7 @@ public class LevelGoalTimed : LevelGoal {
 
 
     public Timer timer;
-	
+    int m_maxTime;
 
 
     void start()
@@ -15,6 +15,7 @@ public class LevelGoalTimed : LevelGoal {
         {
             timer.InitTimer(timeLeft);
         }
+        m_maxTime = timeLeft;
     }
 
     public void StartCountdown()
@@ -36,7 +37,6 @@ public class LevelGoalTimed : LevelGoal {
         }
     }
 
-
     public override bool IsWinner()
     {
         if (ScoreManager.Instance != null) 
@@ -45,9 +45,6 @@ public class LevelGoalTimed : LevelGoal {
         }
         return false;
     }
-
-
-
 
     public override bool IsGameOver()
     {
@@ -59,6 +56,17 @@ public class LevelGoalTimed : LevelGoal {
         }
 
         return (timeLeft <= 0);
+    }
+
+    public void AddTime(int timeValue)
+    {
+        timeLeft += timeValue;
+        timeLeft = Mathf.Clamp(timeLeft, 0, m_maxTime);
+
+        if (timer != null)
+        {
+            timer.UpdateTimer(timeLeft);
+        }
     }
 
 

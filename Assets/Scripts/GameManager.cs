@@ -283,9 +283,6 @@ public class GameManager : Singleton<GameManager> {
       
     }
 
-
-    
-
     public int ChangeLevel(int activeScene, int amount)
     {
         return activeScene + amount;
@@ -315,6 +312,15 @@ public class GameManager : Singleton<GameManager> {
         if (SoundManager.Instance != null && piece.clearSound != null)
         {
             SoundManager.Instance.PlayClipAtPoint(piece.clearSound, Vector3.zero.normalized, SoundManager.Instance.fxVolume);
+        }
+    }
+
+
+    public void AddTime(int timeValue)
+    {
+        if (m_levelGoalTimed != null)
+        {
+            m_levelGoalTimed.AddTime(timeValue);
         }
     }
 
