@@ -59,6 +59,8 @@
      <Compile Include="Assets\Scripts\FinishedGameMessageWindow.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\GamePiece.cs" />
+     <Compile Include="Assets\Scripts\LevelGoal.cs" />
+     <Compile Include="Assets\Scripts\LevelGoalScored.cs" />
      <Compile Include="Assets\Scripts\MessageWindow.cs" />
      <Compile Include="Assets\Scripts\ParticleManager.cs" />
      <Compile Include="Assets\Scripts\ParticlePlayer.cs" />

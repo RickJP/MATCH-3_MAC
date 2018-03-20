@@ -99,8 +99,8 @@ public class BoardDeadlock : MonoBehaviour
 					if (matches.Count >= listLength)
 					{
 						string rowColStr = (checkRow) ? " row" : " column ";
-						Debug.Log("======= AVALIABLE MOVE ======================");
-						Debug.Log("Move " + matches[0].matchValue + " piece to " + unmatchedPiece.xIndex + "," + unmatchedPiece.yIndex + " to form matching " + rowColStr);
+//						Debug.Log("======= AVALIABLE MOVE ======================");
+//						Debug.Log("Move " + matches[0].matchValue + " piece to " + unmatchedPiece.xIndex + "," + unmatchedPiece.yIndex + " to form matching " + rowColStr);
 						return true;
 					}
 		}

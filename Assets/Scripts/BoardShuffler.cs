@@ -2,8 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BoardShuffler : MonoBehaviour 
 {
+   
+
+    void start() {
+
+    }
+
     public List<GamePiece> RemoveNormalPieces(GamePiece[,] allPieces) 
     {
         List<GamePiece> normalPieces = new List<GamePiece>();
@@ -33,6 +40,9 @@ public class BoardShuffler : MonoBehaviour
 	
     public void ShuffleList(List<GamePiece> piecesToShuffle)
     {
+        
+
+
         int maxCount = piecesToShuffle.Count;
 
         for (int i = 0; i < maxCount - 1; i++)
@@ -50,6 +60,9 @@ public class BoardShuffler : MonoBehaviour
 
             piecesToShuffle[i] = temp;
         }
+
+        GameManager.Instance.UpdateMoves();
+
     }
 
     public void MovePieces(GamePiece[,] allPieces, float swapTime = 0.5f) 

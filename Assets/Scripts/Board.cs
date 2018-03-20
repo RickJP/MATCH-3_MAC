@@ -27,7 +27,7 @@ public class Board : MonoBehaviour
     // array of dot prefabs
     public GameObject[] gamePiecePrefabs;
 
-    // prefab array for adjacent, column, row and color prefabs
+    // prefab array for adjacent, column, row ancurrd color prefabs
     public GameObject[] adjacentBombPrefabs;
     public GameObject[] columnBombPrefabs;
     public GameObject[] rowBombPrefabs;
@@ -91,6 +91,7 @@ public class Board : MonoBehaviour
 
 	BoardDeadlock m_boardDeadlock; 
     BoardShuffler m_boardShuffler;
+    LevelGoal m_levelGoal;
 
     [System.Serializable]
     public class StartingObject
@@ -116,6 +117,8 @@ public class Board : MonoBehaviour
 		m_boardDeadlock = GetComponent<BoardDeadlock> ();
 
         m_boardShuffler = GetComponent<BoardShuffler>();
+
+
     }
 
     public void SetupBoard()
@@ -493,7 +496,7 @@ public class Board : MonoBehaviour
 
                     if (GameManager.Instance != null)
                     {
-                        GameManager.Instance.movesLeft--;
+                        //GameManager.Instance.movesLeft--;
                         GameManager.Instance.UpdateMoves();
                     }
 
@@ -780,8 +783,12 @@ public class Board : MonoBehaviour
                 {
                     bonus = 20;
                 }
-                piece.ScorePoints(m_scoreMultiplier);
 
+                if (GameManager.Instance != null)
+                {
+                    GameManager.Instance.ScorePoints(piece, m_scoreMultiplier);
+                }
+           
                 if (m_particleManager != null)
                 {
                     if (bombedPieces.Contains(piece))
@@ -1389,6 +1396,8 @@ public class Board : MonoBehaviour
         {
             StartCoroutine(ShuffleBoardRoutine());
         }
+
+
     }
 
 
@@ -1417,6 +1426,8 @@ public class Board : MonoBehaviour
 
         List<GamePiece> matches = FindAllMatches();
         StartCoroutine(ClearAndRefillBoardRoutine(matches));
+    
+     
     }
         
 }

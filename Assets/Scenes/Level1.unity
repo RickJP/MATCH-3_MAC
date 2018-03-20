@@ -659,6 +659,25 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 554125700}
   m_Script: {fileID: 11500000, guid: 4d794a95611818749aa5dab3265bb2f5, type: 3}
+--- !u!1 &958957494 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1038520880749874, guid: e65b05070cfc5b14eb0e6d500dbd430a,
+    type: 2}
+  m_PrefabInternal: {fileID: 554125700}
+--- !u!114 &958957495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 958957494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c80a00cd97a3f4547983015a355f39dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreStars: 0
+  scoreGoals: e8030000d0070000b80b0000
+  movesLeft: 30
 --- !u!1 &1007814767
 GameObject:
   m_ObjectHideFlags: 0
