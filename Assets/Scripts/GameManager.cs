@@ -154,6 +154,9 @@ public class GameManager : Singleton<GameManager> {
     }
     IEnumerator PlayGameRoutine()
     {
+
+
+
         if (m_levelGoalTimed != null) 
         {
             m_levelGoalTimed.StartCountdown();
@@ -174,6 +177,17 @@ public class GameManager : Singleton<GameManager> {
 
 	IEnumerator WaitForBoardRoutine(float delay = 0f) 
 	{
+
+        if (m_levelGoalTimed != null)
+        {
+            if (m_levelGoalTimed.timer != null)
+            {
+                m_levelGoalTimed.timer.FadeOff();
+                m_levelGoalTimed.timer.paused = true;
+            }
+        }
+
+
 		if (m_board != null) 
 		{
 			yield return new WaitForSeconds (m_board.swapTime);
@@ -186,6 +200,8 @@ public class GameManager : Singleton<GameManager> {
 		yield return new WaitForSeconds (delay);
 	}
 		
+
+
 
     IEnumerator EndGameRoutine()
     {

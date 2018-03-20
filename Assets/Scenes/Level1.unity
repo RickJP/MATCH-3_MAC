@@ -974,6 +974,7 @@ GameObject:
   - component: {fileID: 335002903}
   - component: {fileID: 335002905}
   - component: {fileID: 335002904}
+  - component: {fileID: 335002906}
   m_Layer: 5
   m_Name: ClockBackground
   m_TagString: Untagged
@@ -1033,6 +1034,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 335002902}
+--- !u!114 &335002906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 335002902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce39fe02806fba4784de2466806e7c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solidAlpha: 1
+  clearAlpha: 0
+  delay: 0
+  timeToFade: 1
 --- !u!1 &338599237
 GameObject:
   m_ObjectHideFlags: 0
@@ -1761,6 +1777,10 @@ MonoBehaviour:
   timeLeftText: {fileID: 1910969229}
   clockImage: {fileID: 1577771227}
   paused: 0
+  flashTimerLimit: 10
+  flashBeep: {fileID: 8300000, guid: 6d894f08d52a44322a56f6afc48f59e0, type: 3}
+  flashInterval: 1
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &647669689
 GameObject:
   m_ObjectHideFlags: 0
@@ -1888,6 +1908,7 @@ GameObject:
   - component: {fileID: 827386822}
   - component: {fileID: 827386824}
   - component: {fileID: 827386823}
+  - component: {fileID: 827386825}
   m_Layer: 5
   m_Name: TimeLeftLabel
   m_TagString: Untagged
@@ -1955,6 +1976,21 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 827386821}
+--- !u!114 &827386825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 827386821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce39fe02806fba4784de2466806e7c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solidAlpha: 1
+  clearAlpha: 0
+  delay: 0
+  timeToFade: 1
 --- !u!1001 &874576002
 Prefab:
   m_ObjectHideFlags: 0
@@ -2136,9 +2172,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreStars: 0
-  scoreGoals: e8030000d0070000b80b0000
+  scoreGoals: f4010000ee020000d0070000
   movesLeft: 30
   timeLeft: 15
+  timer: {fileID: 588924372}
 --- !u!1 &986233398
 GameObject:
   m_ObjectHideFlags: 0
@@ -3028,6 +3065,7 @@ GameObject:
   - component: {fileID: 1577771226}
   - component: {fileID: 1577771228}
   - component: {fileID: 1577771227}
+  - component: {fileID: 1577771229}
   m_Layer: 5
   m_Name: ClockImage
   m_TagString: Untagged
@@ -3086,6 +3124,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1577771225}
+--- !u!114 &1577771229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1577771225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce39fe02806fba4784de2466806e7c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solidAlpha: 1
+  clearAlpha: 0
+  delay: 0
+  timeToFade: 1
 --- !u!1 &1608380087
 GameObject:
   m_ObjectHideFlags: 0
@@ -3487,6 +3540,7 @@ GameObject:
   - component: {fileID: 1910969228}
   - component: {fileID: 1910969230}
   - component: {fileID: 1910969229}
+  - component: {fileID: 1910969231}
   m_Layer: 5
   m_Name: TimeLeftText
   m_TagString: Untagged
@@ -3547,8 +3601,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: '60
-
+  m_Text: '
 
 '
 --- !u!222 &1910969230
@@ -3558,6 +3611,21 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1910969227}
+--- !u!114 &1910969231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1910969227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce39fe02806fba4784de2466806e7c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solidAlpha: 1
+  clearAlpha: 0
+  delay: 0
+  timeToFade: 1
 --- !u!1 &1914065210
 GameObject:
   m_ObjectHideFlags: 0
