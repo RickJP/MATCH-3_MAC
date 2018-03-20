@@ -115,10 +115,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f6e7e29a73f247a0b7b65c736e53e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bonusValue: 0
+  bonusValue: 5
   chanceForBonus: 0
   bonusGlow: {fileID: 1360980287168652}
   ringGlow: {fileID: 1803357713977472}
+  bonusMaterials:
+  - {fileID: 2100000, guid: 37a70e431842c4da8bd54b57f79a6a15, type: 2}
+  - {fileID: 2100000, guid: 6c1115aa8238945aa8a890f8d9eab054, type: 2}
+  - {fileID: 2100000, guid: f9abcc6651fa740c8b13e5a68041d9f1, type: 2}
+  - {fileID: 2100000, guid: 0be551819c18d475d8b62058253297a4, type: 2}
+  - {fileID: 2100000, guid: b86a977f1328a43588158f40baa66678, type: 2}
 --- !u!114 &114786831080347828
 MonoBehaviour:
   m_ObjectHideFlags: 1

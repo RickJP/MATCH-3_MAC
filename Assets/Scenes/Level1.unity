@@ -1727,7 +1727,8 @@ Prefab:
       propertyPath: endLevelMessageWindow
       value: 
       objectReference: {fileID: 1870836379}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114040287012618912, guid: e65b05070cfc5b14eb0e6d500dbd430a, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: e65b05070cfc5b14eb0e6d500dbd430a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &588924370
@@ -2173,14 +2174,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 958957494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d275750029402486db4dc893814f675f, type: 3}
+  m_Script: {fileID: 11500000, guid: 81c69ec8737ec45f4bf584d3fec1bede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scoreStars: 0
-  scoreGoals: f4010000ee020000d0070000
+  scoreGoals: e8030000d0070000b80b0000
   movesLeft: 30
   timeLeft: 60
-  timer: {fileID: 588924372}
 --- !u!1 &986233398
 GameObject:
   m_ObjectHideFlags: 0
