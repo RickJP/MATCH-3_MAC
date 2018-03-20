@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 
 
 [RequireComponent(typeof(LevelGoal))]
-public class GameManager : Singleton<GameManager> {
+public class GameManager : Singleton<GameManager>
+{
 
 
-//    public int movesLeft = 3;
-//    public int scoreGoal = 10000;
+    //    public int movesLeft = 3;
+    //    public int scoreGoal = 10000;
 
 
     public ScreenFader screenFader;
@@ -26,15 +27,7 @@ public class GameManager : Singleton<GameManager> {
     //bool m_isGameFinished = false;
 
 
-	public bool IsGameOver
-	{
-		get {
-			return m_isGameOver;
-		}
-		set {
-			m_isGameOver = value;
-		}
-	}
+    public bool IsGameOver { get { return m_isGameOver; } set { m_isGameOver = value; } }
 
     public Sprite winIcon;
     public Sprite loseIcon;
@@ -50,6 +43,9 @@ public class GameManager : Singleton<GameManager> {
     LevelGoal m_levelGoal;
     LevelGoalTimed m_levelGoalTimed;
 
+    public LevelGoalTimed levelGoalTimed { get { return m_levelGoalTimed; } }
+
+
     public override void Awake()
     {
         base.Awake();
@@ -61,12 +57,12 @@ public class GameManager : Singleton<GameManager> {
 
     }
 
-	void Start ()
+    void Start()
     {
 
         if (scoreMeter != null)
         {
-            print("Setup stars");
+            //print("Setup stars");
             scoreMeter.SetupStars(m_levelGoal);
         }
 
@@ -84,13 +80,13 @@ public class GameManager : Singleton<GameManager> {
 
 
         StartCoroutine(ExecuteGameLoop());
-	}
-	
+    }
+
 
     public void UpdateMoves()
     {
 
-        if (m_levelGoalTimed == null) 
+        if (m_levelGoalTimed == null)
         {
             m_levelGoal.movesLeft--;
 
@@ -99,7 +95,7 @@ public class GameManager : Singleton<GameManager> {
                 movesLeftText.text = m_levelGoal.movesLeft.ToString();
             }
         }
-        else 
+        else
         {
             if (movesLeftText != null)
             {
@@ -115,7 +111,7 @@ public class GameManager : Singleton<GameManager> {
         yield return StartCoroutine("StartGameRoutine");
         yield return StartCoroutine("PlayGameRoutine");
 
-		yield return StartCoroutine ("WaitForBoardRoutine", 0.5f);
+        yield return StartCoroutine("WaitForBoardRoutine", 0.5f);
         yield return StartCoroutine("EndGameRoutine");
     }
 
@@ -152,12 +148,13 @@ public class GameManager : Singleton<GameManager> {
         }
        
     }
+
     IEnumerator PlayGameRoutine()
     {
 
 
 
-        if (m_levelGoalTimed != null) 
+        if (m_levelGoalTimed != null)
         {
             m_levelGoalTimed.StartCountdown();
         }
@@ -175,8 +172,8 @@ public class GameManager : Singleton<GameManager> {
     }
 
 
-	IEnumerator WaitForBoardRoutine(float delay = 0f) 
-	{
+    IEnumerator WaitForBoardRoutine(float delay = 0f)
+    {
 
         if (m_levelGoalTimed != null)
         {
@@ -188,18 +185,18 @@ public class GameManager : Singleton<GameManager> {
         }
 
 
-		if (m_board != null) 
-		{
-			yield return new WaitForSeconds (m_board.swapTime);
-			while (m_board.isRefilling) 
-			{
-				yield return null;
+        if (m_board != null)
+        {
+            yield return new WaitForSeconds(m_board.swapTime);
+            while (m_board.isRefilling)
+            {
+                yield return null;
 
-			}
-		}
-		yield return new WaitForSeconds (delay);
-	}
-		
+            }
+        }
+        yield return new WaitForSeconds(delay);
+    }
+
 
 
 
@@ -210,7 +207,7 @@ public class GameManager : Singleton<GameManager> {
        
         if (m_isWinner)
         {
-         if (messageWindow != null)
+            if (messageWindow != null)
             {
                 messageWindow.GetComponent<RectXFormMover>().MoveOn();
                 messageWindow.ShowMessage(winIcon, "YOU WON!", "OK");
@@ -221,7 +218,8 @@ public class GameManager : Singleton<GameManager> {
                 SoundManager.Instance.PlayWinSound();
             }
 
-        } else
+        }
+        else
         {
             messageWindow.GetComponent<RectXFormMover>().MoveOn();
             messageWindow.ShowMessage(loseIcon, "YOU LOST!", "OK");
@@ -296,13 +294,13 @@ public class GameManager : Singleton<GameManager> {
 
     public void ScorePoints(GamePiece piece, int multiplier = 1, int bonus = 0)
     {
-        if (ScoreManager.Instance != null )
+        if (ScoreManager.Instance != null)
         {
             ScoreManager.Instance.AddScore(piece.scoreValue * multiplier + bonus);
             m_levelGoal.UpdateScoreStars(ScoreManager.Instance.CurrentScore);
 
 
-            if (scoreMeter != null) 
+            if (scoreMeter != null)
             {
                 scoreMeter.UpdateScoreMeter(ScoreManager.Instance.CurrentScore, m_levelGoal.scoreStars);
             }

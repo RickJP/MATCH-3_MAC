@@ -146,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allParticles: []
   lifetime: 1
+  destroyImmediately: 1
 --- !u!198 &198577844550092454
 ParticleSystem:
   m_ObjectHideFlags: 1

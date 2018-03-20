@@ -217,7 +217,7 @@ MonoBehaviour:
     type: 2}
   gamePiecePrefabs:
   - {fileID: 1764584299026588, guid: d25f2e53e91ce49bd99d368bec39987a, type: 2}
-  - {fileID: 1616169278628932, guid: d8220af17d71d4a7b91d94fdb37f90e0, type: 2}
+  - {fileID: 1163404763019208, guid: 2eeae49795c0c46a6a128bc0ad3434da, type: 2}
   - {fileID: 1664362004353522, guid: ded3823fda2b64d07a29783e0ce9acc9, type: 2}
   - {fileID: 1372902284518312, guid: ddd7ecb364d034ad295c2ea9c8df1999, type: 2}
   - {fileID: 1282329895864240, guid: 16eff60049fa742e09c4e037182057a2, type: 2}
@@ -1722,6 +1722,11 @@ Prefab:
       propertyPath: scoreMeter
       value: 
       objectReference: {fileID: 1270430560}
+    - target: {fileID: 114629511132459612, guid: e65b05070cfc5b14eb0e6d500dbd430a,
+        type: 2}
+      propertyPath: endLevelMessageWindow
+      value: 
+      objectReference: {fileID: 1870836379}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e65b05070cfc5b14eb0e6d500dbd430a, type: 2}
   m_IsPrefabParent: 0
@@ -2174,7 +2179,7 @@ MonoBehaviour:
   scoreStars: 0
   scoreGoals: f4010000ee020000d0070000
   movesLeft: 30
-  timeLeft: 15
+  timeLeft: 60
   timer: {fileID: 588924372}
 --- !u!1 &986233398
 GameObject:
