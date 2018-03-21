@@ -5,9 +5,7 @@ using UnityEngine;
 public class LevelGoalCollected : LevelGoal {
 
     public CollectionGoal[] collectionGoals;
-
-    public CollectionGoalPanel[] uiPanels;
-
+   
 
     public void UpdateGoals(GamePiece pieceToCheck)
     {
@@ -27,12 +25,9 @@ public class LevelGoalCollected : LevelGoal {
 
     public void UpdateUI()
     {
-        foreach(CollectionGoalPanel panel in uiPanels)
+        if (UIManager.Instance != null)
         {
-            if (panel != null)
-            {
-                panel.UpdatePanel();
-            }
+            UIManager.Instance.UpdateCollectionGoalLayout();
         }
     }
 
@@ -69,7 +64,15 @@ public class LevelGoalCollected : LevelGoal {
             }
         }
 
-        return (movesLeft <= 0);
+        if (levelCounter == LevelCounter.Timer)
+        {
+            return(timeLeft <= 0);
+        }
+        else 
+        {
+            return (movesLeft <= 0);
+        }
+
     }
 
     public override bool IsWinner()

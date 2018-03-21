@@ -2966,20 +2966,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 958957494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81c69ec8737ec45f4bf584d3fec1bede, type: 3}
+  m_Script: {fileID: 11500000, guid: d275750029402486db4dc893814f675f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scoreStars: 0
-  scoreGoals: f4010000d0070000b80b0000
-  movesLeft: 6
-  timeLeft: 60
+  scoreGoals: e8030000d0070000b80b0000
+  movesLeft: 30
+  timeLeft: 23
   levelCounter: 1
-  collectionGoals:
-  - {fileID: 78950562}
-  - {fileID: 1349780331}
-  - {fileID: 1655559080}
-  - {fileID: 1507576720}
-  - {fileID: 355926641}
 --- !u!4 &958957497
 Transform:
   m_ObjectHideFlags: 0

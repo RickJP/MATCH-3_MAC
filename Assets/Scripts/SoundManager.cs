@@ -10,7 +10,7 @@ public class SoundManager : Singleton<SoundManager> {
     public AudioClip[] bonusClips;
 
     [Range(0, 1)]
-    public float musicVolume = 0.4f;
+    public float musicVolume = 0.2f;
 
     [Range(0, 1)]
     public float fxVolume = 0.8f;

@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bonusValue: 5
-  chanceForBonus: 0
+  chanceForBonus: 1
   bonusGlow: {fileID: 1360980287168652}
   ringGlow: {fileID: 1803357713977472}
   bonusMaterials:

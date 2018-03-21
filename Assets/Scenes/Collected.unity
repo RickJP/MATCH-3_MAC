@@ -2972,8 +2972,8 @@ MonoBehaviour:
   scoreStars: 0
   scoreGoals: f4010000d0070000b80b0000
   movesLeft: 6
-  timeLeft: 60
-  levelCounter: 1
+  timeLeft: 30
+  levelCounter: 0
   collectionGoals:
   - {fileID: 78950562}
   - {fileID: 1349780331}

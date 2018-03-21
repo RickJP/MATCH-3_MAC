@@ -5,36 +5,15 @@ using UnityEngine;
 public class LevelGoalTimed : LevelGoal {
 
 
-    public Timer timer;
-    int m_maxTime;
+   // public Timer timer;
+   // int m_maxTime;
 
 
-    void start()
+    public override void Start()
     {
-        if (timer != null) 
-        {
-            timer.InitTimer(timeLeft);
-        }
-        m_maxTime = timeLeft;
-    }
+        levelCounter = LevelCounter.Timer;
+        base.Start();
 
-    public void StartCountdown()
-    {
-        StartCoroutine(CountDownRoutine());
-    }
-
-    IEnumerator CountDownRoutine()
-    {
-        while (timeLeft > 0) 
-        {
-            yield return new WaitForSeconds(1f);
-            timeLeft--;
-
-            if (timer != null)
-            {
-                timer.UpdateTimer(timeLeft);
-            }
-        }
     }
 
     public override bool IsWinner()
@@ -57,17 +36,5 @@ public class LevelGoalTimed : LevelGoal {
 
         return (timeLeft <= 0);
     }
-
-    public void AddTime(int timeValue)
-    {
-        timeLeft += timeValue;
-        timeLeft = Mathf.Clamp(timeLeft, 0, m_maxTime);
-
-        if (timer != null)
-        {
-            timer.UpdateTimer(timeLeft);
-        }
-    }
-
 
 }
