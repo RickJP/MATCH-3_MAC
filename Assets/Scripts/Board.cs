@@ -793,8 +793,10 @@ public class Board : MonoBehaviour
                     if (timeBonus != null)
                     {
                         GameManager.Instance.AddTime(timeBonus.bonusValue);
-                        Debug.Log("BOARD Adding time bonus from " + piece.name + " of " + timeBonus.bonusValue);
+                       // Debug.Log("BOARD Adding time bonus from " + piece.name + " of " + timeBonus.bonusValue);
                     }
+
+                    GameManager.Instance.UpdateCollectionGoals(piece);
                 }
            
                 if (m_particleManager != null)
