@@ -463,6 +463,9 @@ public class Board : MonoBehaviour
 
                 List<GamePiece> clickedPieceMatches = FindMatchesAt(clickedTile.xIndex, clickedTile.yIndex);
                 List<GamePiece> targetPieceMatches = FindMatchesAt(targetTile.xIndex, targetTile.yIndex);
+
+
+                #region color bombs
                 List<GamePiece> colorMatches = new List<GamePiece>();
 
                 if (IsColorBomb(clickedPiece) && !IsColorBomb(targetPiece))
@@ -485,6 +488,7 @@ public class Board : MonoBehaviour
                         }
                     }
                 }
+                #endregion
 
                 if (targetPieceMatches.Count == 0 && clickedPieceMatches.Count == 0 && colorMatches.Count == 0)
                 {
@@ -494,14 +498,11 @@ public class Board : MonoBehaviour
                 else
                 {
 
-                    if (GameManager.Instance != null)
-                    {
-                        //GameManager.Instance.movesLeft--;
-                        GameManager.Instance.UpdateMoves();
-                    }
+
 
                     yield return new WaitForSeconds(swapTime);
-                    
+
+                    #region drop bombs
                     Vector2 swipeDirection = new Vector2(targetTile.xIndex - clickedTile.xIndex, targetTile.yIndex - clickedTile.yIndex);
                     m_clickedTileBomb = DropBomb(clickedTile.xIndex, clickedTile.yIndex, swipeDirection, clickedPieceMatches);
                     m_targetTileBomb = DropBomb(targetTile.xIndex, targetTile.yIndex, swipeDirection, targetPieceMatches);
@@ -523,7 +524,18 @@ public class Board : MonoBehaviour
                             targetBombPiece.ChangeColor(clickedPiece);
                         }                   
                     }
-                    ClearAndRefillBoard(clickedPieceMatches.Union(targetPieceMatches).ToList().Union(colorMatches).ToList());
+                    #endregion
+
+                    List<GamePiece> piecesToClear = clickedPieceMatches.Union(targetPieceMatches).ToList().Union(colorMatches).ToList();
+                    yield return StartCoroutine(ClearAndRefillBoardRoutine(piecesToClear));
+
+                
+              
+                    if (GameManager.Instance != null)
+                    {
+                        //GameManager.Instance.movesLeft--;
+                        GameManager.Instance.UpdateMoves();
+                    }
                 }
             }
         }

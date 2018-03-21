@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\Bomb.cs" />
      <Compile Include="Assets\Scripts\Collectible.cs" />
      <Compile Include="Assets\Scripts\CollectionGoal.cs" />
+     <Compile Include="Assets\Scripts\CollectionGoalPanel.cs" />
      <Compile Include="Assets\Scripts\FinishedGameMessageWindow.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\GamePiece.cs" />
