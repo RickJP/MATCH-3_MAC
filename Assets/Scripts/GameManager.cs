@@ -18,10 +18,6 @@ public class GameManager : Singleton<GameManager>
 
     public bool IsGameOver { get { return m_isGameOver; } set { m_isGameOver = value; } }
 
-    public Sprite winIcon;
-    public Sprite loseIcon;
-    public Sprite goalIcon;
-
     int activeScene;
     int sceneCount;
     int nextLevel = 0;
@@ -30,6 +26,9 @@ public class GameManager : Singleton<GameManager>
     LevelGoal m_levelGoal;
     //LevelGoalTimed m_levelGoalTimed;
     LevelGoalCollected m_levelGoalCollected;
+
+ 
+
 
     public LevelGoal levelGoal { get { return m_levelGoal; } }
 
@@ -85,6 +84,7 @@ public class GameManager : Singleton<GameManager>
         m_levelGoal.movesLeft++;
         UpdateMoves();
 
+        // start the main game loop
         StartCoroutine(ExecuteGameLoop());
     }
 
@@ -120,26 +120,25 @@ public class GameManager : Singleton<GameManager>
 
     IEnumerator StartGameRoutine()
     {
-
-
         if (UIManager.Instance != null)
         {
             if (UIManager.Instance.messageWindow != null)
             {
                 UIManager.Instance.messageWindow.GetComponent<RectXFormMover>().MoveOn();
-                UIManager.Instance.messageWindow.ShowMessage(goalIcon, "score goal\n" + m_levelGoal.scoreGoals[0].ToString(), "start");           
+
+                int maxGoal = m_levelGoal.scoreGoals.Length - 1;
+                UIManager.Instance.messageWindow.ShowScoreMessage(m_levelGoal.scoreGoals[maxGoal]);           
             
             }
         }
 
-
-
         while (!m_isReadyToBegin)
         {
             yield return null;
-            yield return new WaitForSeconds(0.5f);
-            m_isReadyToBegin = true;
+
         }
+
+
         if (UIManager.Instance != null && UIManager.Instance.screenFader != null)
         {
             UIManager.Instance.screenFader.FadeOff();
@@ -181,7 +180,6 @@ public class GameManager : Singleton<GameManager>
  
             UIManager.Instance.timer.FadeOff();
             UIManager.Instance.timer.paused = true;
-
         }
 
 
@@ -210,7 +208,7 @@ public class GameManager : Singleton<GameManager>
             if (UIManager.Instance != null && UIManager.Instance.messageWindow != null)
             {
                 UIManager.Instance.messageWindow.GetComponent<RectXFormMover>().MoveOn();
-                UIManager.Instance.messageWindow.ShowMessage(winIcon, "YOU WIN!", "OK");
+                UIManager.Instance.messageWindow.ShowWinMessage();
             }   
 
             if (SoundManager.Instance != null)
@@ -225,7 +223,7 @@ public class GameManager : Singleton<GameManager>
             {
 
                 UIManager.Instance.messageWindow.GetComponent<RectXFormMover>().MoveOn();
-                UIManager.Instance.messageWindow.ShowMessage(loseIcon, "YOU LOSE!", "OK");
+                UIManager.Instance.messageWindow.ShowLoseMessage();
             }
 
             if (SoundManager.Instance != null)
@@ -270,9 +268,9 @@ public class GameManager : Singleton<GameManager>
             {
                 
                 UIManager.Instance.endLevelMessageWindow.GetComponent<RectXFormMover>().MoveOn();
-                UIManager.Instance.endLevelMessageWindow.ShowMessage(goalIcon, "You Finished the Game with a score of: " + ScoreManager.Instance.CurrentScore.ToString(), "Next Level");
+                UIManager.Instance.endLevelMessageWindow.ShowFinishedGameMessage();
 
-
+            
                 yield return new WaitForSeconds(1f);
                 if (UIManager.Instance.screenFader != null)
                 {

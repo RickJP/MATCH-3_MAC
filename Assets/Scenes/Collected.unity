@@ -2532,9 +2532,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d794a95611818749aa5dab3265bb2f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winIcon: {fileID: 21300000, guid: d2813ef59efb6814e8afc6f892b25590, type: 3}
-  loseIcon: {fileID: 21300000, guid: 716ad3bf3fcf8da44b5f22e41fe05137, type: 3}
-  goalIcon: {fileID: 21300000, guid: b30e989b7004c084ea5318d92cc40840, type: 3}
 --- !u!1001 &777820811
 Prefab:
   m_ObjectHideFlags: 0
@@ -2966,20 +2963,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 958957494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81c69ec8737ec45f4bf584d3fec1bede, type: 3}
+  m_Script: {fileID: 11500000, guid: d275750029402486db4dc893814f675f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scoreStars: 0
-  scoreGoals: f4010000d0070000b80b0000
-  movesLeft: 6
-  timeLeft: 30
-  levelCounter: 0
-  collectionGoals:
-  - {fileID: 78950562}
-  - {fileID: 1349780331}
-  - {fileID: 1655559080}
-  - {fileID: 1507576720}
-  - {fileID: 355926641}
+  scoreGoals: e8030000d0070000b80b0000
+  movesLeft: 30
+  timeLeft: 23
+  levelCounter: 1
 --- !u!4 &958957497
 Transform:
   m_ObjectHideFlags: 0
@@ -3308,6 +3299,9 @@ MonoBehaviour:
   messageIcon: {fileID: 530595751}
   messageText: {fileID: 162874027}
   buttonText: {fileID: 1914065212}
+  winIcon: {fileID: 21300000, guid: d2813ef59efb6814e8afc6f892b25590, type: 3}
+  loseIcon: {fileID: 21300000, guid: 716ad3bf3fcf8da44b5f22e41fe05137, type: 3}
+  goalIcon: {fileID: 21300000, guid: b30e989b7004c084ea5318d92cc40840, type: 3}
 --- !u!1 &1112784832
 GameObject:
   m_ObjectHideFlags: 0
@@ -5182,7 +5176,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1870836378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5214,6 +5208,9 @@ MonoBehaviour:
   messageIcon: {fileID: 197406061}
   messageText: {fileID: 1932427445}
   buttonText: {fileID: 338599239}
+  winIcon: {fileID: 0}
+  loseIcon: {fileID: 0}
+  goalIcon: {fileID: 0}
 --- !u!114 &1870836380
 MonoBehaviour:
   m_ObjectHideFlags: 0
