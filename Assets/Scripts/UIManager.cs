@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager> 
 {
-    public RectTransform collectionGoalLayout;
+    public GameObject collectionGoalLayout;
     public int collectionGoalBaseWidth = 125;
 
-    CollectionGoalPanel[] m_collectionGoalPanels;
+    //CollectionGoalPanel[] m_collectionGoalPanels;
 
     public ScreenFader screenFader;
     public Text levelNameText;
@@ -16,7 +16,6 @@ public class UIManager : Singleton<UIManager>
     public ScoreMeter scoreMeter;
 
     public MessageWindow messageWindow, endLevelMessageWindow;
-
 
     public GameObject movesCounter;
 
@@ -38,44 +37,65 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
-    public void SetupCollectionGoalLayout(CollectionGoal[] collectionGoals)
+    public void SetupCollectionGoalLayout(CollectionGoal[] collectionGoals, GameObject goalLayout, int spacingWidth)
     {
-        if (collectionGoalLayout != null && collectionGoals != null && 
-            collectionGoals != null)   // ?  formely > collectionGoals.Length != null
+        if (goalLayout != null && collectionGoals != null && 
+            collectionGoals.Length != 0)   // ?  formely > collectionGoals.Length != null
         {
-            collectionGoalLayout.sizeDelta = new Vector2(collectionGoals.Length * collectionGoalBaseWidth,
-                collectionGoalLayout.sizeDelta.y);
-            m_collectionGoalPanels = collectionGoalLayout.gameObject.GetComponentsInChildren<CollectionGoalPanel>();
+            RectTransform rectXform = goalLayout.GetComponent<RectTransform>();
+            rectXform.sizeDelta = new Vector2(collectionGoals.Length * spacingWidth, rectXform.sizeDelta.y);
 
-            for (int i = 0; i < m_collectionGoalPanels.Length; i++)
+
+            CollectionGoalPanel[] panels = goalLayout.GetComponentsInChildren<CollectionGoalPanel>();
+
+            for (int i = 0; i < panels.Length; i++)
             {
                 if (i < collectionGoals.Length && collectionGoals[i] != null)
                 {
-                    m_collectionGoalPanels[i].gameObject.SetActive(true);
-                    m_collectionGoalPanels[i].collectionGoal = collectionGoals[i];
-                    m_collectionGoalPanels[i].SetupPanel();
+                    panels[i].gameObject.SetActive(true);
+                    panels[i].collectionGoal = collectionGoals[i];
+                    panels[i].SetupPanel();
 
                 }
                 else
                 {
-                    m_collectionGoalPanels[i].gameObject.SetActive(false);
+                    panels[i].gameObject.SetActive(false);
                 }
             }
         }
     }
 
-    public void UpdateCollectionGoalLayout()
+
+    public void SetupCollectionGoalLayout(CollectionGoal[] collectionGoals)
     {
-        foreach(CollectionGoalPanel panel in m_collectionGoalPanels)
+        SetupCollectionGoalLayout(collectionGoals, collectionGoalLayout, collectionGoalBaseWidth);
+    }
+
+    public void UpdateColletionGoalLayout(GameObject goalLayout)
+    {
+        if (goalLayout != null)
         {
-            if (panel != null && panel.gameObject.activeInHierarchy)
+            CollectionGoalPanel[] panels = goalLayout.GetComponentsInChildren<CollectionGoalPanel>();
+
+            if (panels != null && panels.Length != 0)
             {
-                panel.UpdatePanel();
+                foreach(CollectionGoalPanel panel in panels)
+                {
+                    if (panel != null && panel.isActiveAndEnabled)
+                    {
+                        panel.UpdatePanel();
+                    }
+                }
             }
         }
     }
 
 
+
+    public void UpdateCollectionGoalLayout()
+    {
+        UpdateColletionGoalLayout(collectionGoalLayout);
+    }
 
     public void EnableTimer(bool state)
     {
@@ -95,10 +115,13 @@ public class UIManager : Singleton<UIManager>
 
     public void EnableCollectionGoalLayout(bool state)
     {
+
+
         if (collectionGoalLayout != null)
         {
             collectionGoalLayout.gameObject.SetActive(state);
         }
     }
+
 
 }

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class MessageWindow : MonoBehaviour
 {
 
-    public Image messageIcon;
+    public Image messageImage;
     public Text messageText;
     public Text buttonText;
 
@@ -15,15 +15,27 @@ public class MessageWindow : MonoBehaviour
     public Sprite loseIcon;
     public Sprite goalIcon;
 
+    public Sprite goalCompleteIcon;
+    public Sprite goalFailedIcon;
+
+    public Sprite collectIcon;
+    public Sprite timerIcon;
+    public Sprite movesIcon;
+
+    public Image goalImage;
+    public Text goalText;
+
+    public GameObject collectionGoalLayout;
+
     static string m_finalScoreStr;
 
 
 
     public void ShowMessage(Sprite sprite = null, string message = "", string buttonMsg = "start")
     {
-        if (messageIcon != null)
+        if (messageImage != null)
         {
-            messageIcon.sprite = sprite;
+            messageImage.sprite = sprite;
         }
 
         if (messageText != null)
@@ -61,6 +73,70 @@ public class MessageWindow : MonoBehaviour
         m_finalScoreStr = ScoreManager.Instance.CurrentScore.ToString();
         string message = "You Finished\n with a score of: ";
         ShowMessage(winIcon, message, "try again!");
+    }
+
+
+    public void ShowGoal(string caption = "", Sprite icon = null)
+    {
+        if (caption != "")
+        {
+            ShowGoalCaption(caption);
+        }
+
+        if (icon != null)
+        {
+            ShowGoalImage(icon);
+        }
+    }
+
+    public void ShowTimeGoal(int time)
+    {
+        string caption = time.ToString() + " seconds";
+        ShowGoal(caption, timerIcon);
+    }
+
+    public void ShowMovesGoal(int moves)
+    {
+        string caption = moves.ToString() + " moves";
+        ShowGoal(caption, movesIcon);
+    }
+
+    public void ShowCollectionGoal(bool state = true)
+    {
+        if (collectionGoalLayout != null)
+        {
+            collectionGoalLayout.SetActive(state);
+        }
+
+        if (state)
+        {
+            ShowGoal("", collectIcon);
+        }
+
+    }
+
+
+    public void ShowGoalCaption(string caption = "",int offsetX = 0, int offsetY = 0)
+    {
+        if (goalText != null)
+        {
+            goalText.text = caption;
+            RectTransform rectXform = goalText.GetComponent<RectTransform>();
+            rectXform.anchoredPosition += new Vector2(offsetX, offsetY);
+        }
+    }
+
+    public void ShowGoalImage(Sprite icon = null)
+    {
+        if (goalImage != null)
+        {
+            goalImage.gameObject.SetActive(true);
+            goalImage.sprite = icon;
+        }
+        if (icon == null)
+        {
+            goalImage.gameObject.SetActive(false);
+        }
     }
         
 }
