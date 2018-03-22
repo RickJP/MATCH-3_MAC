@@ -178,6 +178,22 @@ public class Board : MonoBehaviour
     }
 
 
+    public void MakeColorBombBooster(int x, int y)
+    {
+        if (IsWithinBounds(x, y))
+        {
+            GamePiece pieceToReplace = m_allGamePieces[x, y];
+
+            if (pieceToReplace != null)
+            {
+                ClearPieceAt(x, y);
+                GameObject bombObject = MakeBomb(colorBombPrefab, x, y);
+                ActivateBomb(bombObject);
+            }
+        }
+    }
+
+
 	GameObject MakeBomb(GameObject prefab, int x, int y)
     {
         if (prefab != null && IsWithinBounds(x, y))
@@ -976,6 +992,19 @@ public class Board : MonoBehaviour
 
 		isRefilling = false;
     }
+
+
+    public void ClearAndRefillBoard(int x, int y)
+    {
+        if (IsWithinBounds(x, y)) 
+        {
+            GamePiece pieceToClear = m_allGamePieces[x, y];
+            List<GamePiece> listOfOne = new List<GamePiece>();
+            listOfOne.Add(pieceToClear);
+            ClearAndRefillBoard(listOfOne);
+        }
+    }
+
 
 
     IEnumerator ClearAndCollapseRoutine(List<GamePiece> gamePieces)

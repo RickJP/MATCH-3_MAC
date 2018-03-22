@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\BoardDeadlock.cs" />
      <Compile Include="Assets\Scripts\BoardShuffler.cs" />
      <Compile Include="Assets\Scripts\Bomb.cs" />
+     <Compile Include="Assets\Scripts\Booster.cs" />
      <Compile Include="Assets\Scripts\Collectible.cs" />
      <Compile Include="Assets\Scripts\CollectionGoal.cs" />
      <Compile Include="Assets\Scripts\CollectionGoalPanel.cs" />

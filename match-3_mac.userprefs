@@ -1,18 +1,19 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Booster.cs">
     <Files>
-      <File FileName="Assets/Scripts/GameManager.cs" Line="130" Column="1" />
-      <File FileName="Assets/Scripts/MessageWindow.cs" Line="49" Column="33" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="380" Column="14" />
       <File FileName="Assets/Scripts/UIManager.cs" Line="57" Column="21" />
+      <File FileName="Assets/Scripts/MessageWindow.cs" Line="130" Column="6" />
       <File FileName="Assets/Scripts/Board.cs" Line="250" Column="10" />
       <File FileName="Assets/Scripts/ScoreMeter.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/TimeBonus.cs" Line="31" Column="39" />
-      <File FileName="Assets/Scripts/LevelGoal.cs" Line="95" Column="10" />
+      <File FileName="Assets/Scripts/TimeBonus.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/LevelGoal.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/LevelGoalScored.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/LevelGoalTimed.cs" Line="16" Column="1" />
-      <File FileName="Assets/Scripts/LevelGoalCollected.cs" Line="73" Column="37" />
-      <File FileName="Assets/Scripts/Timer.cs" Line="36" Column="10" />
+      <File FileName="Assets/Scripts/LevelGoalTimed.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/LevelGoalCollected.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Timer.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Booster.cs" Line="66" Column="14" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
